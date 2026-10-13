@@ -169,7 +169,7 @@ calibrate CBCT values to Hounsfield units.
 
 ## Licence
 
-Code: **MIT**, see [LICENSE](LICENSE). Copyright (c) 2026 Yunyou Huang and Hong Teng.
+Code: **MIT**, see [LICENSE](LICENSE). Copyright (c) 2026  Hong Teng.
 
 Data: **CC BY 4.0**, as stated in the data record. The two are licensed separately; the MIT
 licence covers the scripts in this repository, not the dataset.
