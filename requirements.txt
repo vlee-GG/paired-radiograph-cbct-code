@@ -1,0 +1,6 @@
+# cbct_cut_1.py writes the positioning-check images with matplotlib.
+numpy==1.26.4
+nibabel==5.4.2
+pydicom==3.0.2
+Pillow==10.4.0
+matplotlib==3.9.2
