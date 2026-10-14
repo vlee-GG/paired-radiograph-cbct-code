@@ -4,7 +4,7 @@ Two programs: the local cropping program that produced the released crops, and t
 retrieval check that produced `validation/correspondence_check.csv`.
 
 > Dataset: `physionet-paired-radiograph-cbct` version 1.0.0, CC BY 4.0.
-> 14,762 files, 46.41 GiB, 2,229 paired records over 335 source CBCT volumes.
+> 14,767 files, 46.43 GiB, 2,229 paired records over 335 source CBCT volumes.
 > DOI: *to be inserted once the deposition is issued.*
 
 Code licence: MIT, see [LICENSE](LICENSE). The dataset is released separately under CC BY 4.0.
@@ -27,11 +27,42 @@ release, and neither writes into it unless you point it there.
 The scripts that construct the metadata, file-QC, partition and checksum tables are not
 included; they read raw acquisition directories that are not part of the release. The data
 record's Code Availability section states this. Everything those tables describe can be
-checked against the release itself, and `metadata/data_dictionary.csv` defines every field.
+checked against the release itself. `metadata/data_dictionary.csv` contains 228 definitions
+for the core record, file and review tables; some auxiliary historical CSVs are not covered.
+
+## Blinded-review materials in the data release
+
+The data package contains 14,767 files, with 14,766 entries in its root checksum manifest,
+11 metadata CSV tables and 706 validation files. Imaging and coordinate files number
+14,044; documentation, metadata and validation account for the other 723 files.
+These are dataset counts, separate from this code repository's `MANIFEST_SHA256.txt`.
+
+The following files are included in the dataset, under `validation/anatomical_review/`:
+
+| File | Purpose |
+|---|---|
+| `build_review_composites.py` | reconstruct the 300 composites used in the historical blinded review |
+| `anat_choices.csv` | selected per-case section indices and full-precision display windows |
+
+```bash
+python ../physionet-paired-radiograph-cbct/validation/anatomical_review/build_review_composites.py --dataset ../physionet-paired-radiograph-cbct --out ./review_cases
+```
+
+Sections maximise the fraction of voxels above 300 rescaled units along the corresponding
+array axis. The fixed windows are 3 to 59,745 for radiographs and -1000.0001220703 to
+1780.0089111328 rescaled units for CBCT. These CBCT values are not calibrated Hounsfield units.
+
+The generator preserves the images seen by the reviewers, including historical annotations
+labelled 10 mm whose rendered lengths were calculated incorrectly from image spacing and
+display scaling. Those annotations are not valid physical scale bars and must not be used
+for distance measurements. The reported review assesses qualitative compatibility of local
+anatomy. Any subsequent images with corrected scale bars must be identified as a revised
+display version rather than presented as the original reviewed material. The published
+review decisions and statistics are unchanged.
 
 ## Install
 
-Python 3.9 or later.
+Python 3.10 or later. The pinned nibabel and pydicom versions require Python 3.10 or later.
 
 ```bash
 pip install -r requirements.txt
