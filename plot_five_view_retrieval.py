@@ -13,7 +13,7 @@ def main():
     subset=lambda s:'Mouse' if meta[s]['species']=='mouse' else {'limb_unspecified':'Rabbit limb','maxillary':'Rabbit maxilla','mandibular':'Rabbit mandible'}[meta[s]['anatomical_region']]
     groups=['Rabbit limb','Rabbit maxilla','Rabbit mandible','Mouse'];heat=np.array([[(rank[np.array([subset(s)==g for s in ids]),ai]==1).mean()*100 for ai in range(5)] for g in groups]);nn=[sum(subset(s)==g for s in ids) for g in groups]
     plt.rcParams.update({'font.family':'sans-serif','font.sans-serif':['Arial','DejaVu Sans'],'font.size':7,'axes.labelsize':7,'axes.titlesize':7,'legend.fontsize':6.5,'pdf.fonttype':42,'svg.fonttype':'none','axes.spines.top':False,'axes.spines.right':False,'axes.linewidth':.6})
-    fig,(ax,bx)=plt.subplots(1,2,figsize=(183/25.4,79/25.4),gridspec_kw={'width_ratios':[1.15,1]});fig.subplots_adjust(left=.075,right=.96,bottom=.19,top=.87,wspace=.54)
+    fig,(ax,bx)=plt.subplots(1,2,figsize=(183/25.4,79/25.4),gridspec_kw={'width_ratios':[1.15,1]});fig.subplots_adjust(left=.075,right=.90,bottom=.19,top=.87,wspace=.54)
     colors=['#0072B2','#56B4E9','#202020','#D55E00','#CC79A7'];styles=['-','--','-',':','-.'];x=np.arange(1,21)
     for ai,a in enumerate(angles):ax.plot(x,[(rank[:,ai]<=k).mean()*100 for k in x],label=f'{a}°',color=colors[ai],ls=styles[ai],lw=1.25)
     ax.plot(x,x*5,color='.65',lw=.8,ls='--',label='Chance');ax.set(xlim=(1,20),ylim=(0,102),xlabel='Candidate rank, k',ylabel='Recorded assignment within top k (%)',xticks=[1,3,5,10,15,20],yticks=[0,25,50,75,100]);ax.legend(loc='lower right',ncol=2,columnspacing=.9,handlelength=2)
@@ -31,3 +31,4 @@ def main():
             for i,a in enumerate(angles):w.writerow(['b',g,a,1,heat[j,i],nn[j]])
     print('Figure 6 exported; records',len(ids),'angles',angles.tolist())
 if __name__=='__main__':main()
+
