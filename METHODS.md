@@ -13,9 +13,9 @@ for the core record, file and review tables; some auxiliary historical CSVs are 
 
 ## Blinded-review materials in the data release
 
-The data package contains 14,767 files, with 14,766 entries in its root checksum manifest,
-11 metadata CSV tables and 706 validation files. Imaging and coordinate files number
-14,044; documentation, metadata and validation account for the other 723 files.
+The data package contains 14,783 files, with 14,782 entries in its root checksum manifest,
+11 metadata CSV tables and 722 validation files. Imaging and coordinate files number
+14,044; documentation, metadata and validation account for the other 739 files.
 These are dataset counts, separate from this code repository's `MANIFEST_SHA256.txt`.
 
 The following files are included in the dataset, under `validation/anatomical_review/`:
@@ -152,18 +152,32 @@ the 110 corrected records (median 0.34 against 0.11).
 | By subset | rabbit limb 89.4%, maxilla 78.9%, mandible 79.8%, mouse 60.3% |
 
 This describes the release as it stands rather than estimating performance on unseen data:
-the search variants and the shift window are fixed constants, so nothing is fitted to these
-records.
+the search variants were developed on 255 records from a 511-record sample and then retained for the release-level analysis.
 
 ## Scope
 
 Both programs were written for the authors' working tree and are published as they were run;
 retarget them with the options above.
 
-The retrieval check covers the 90-degree view only. It is an automated consistency measure:
+The original correspondence_check.py covers the 90-degree view. The five-view extension below evaluates every nominal angle separately. It is an automated consistency measure:
 it involves no reviewer decisions, provides no registration-error bound, and does not
 confirm every pairing. It is not a substitute for the blinded anatomical-correspondence
 review reported in the data record. The measure answers how *distinguishable* a crop is,
 whereas anatomical correspondence requires *identity*. The cropping program yields
 approximate local anatomical correspondence; it computes no projection matrix and does not
 calibrate CBCT values to Hounsfield units.
+
+
+## Five-view independent retrieval
+
+Run `python five_view_retrieval.py --dataset <release-root> --out <new-output> --workers 2`. The output directory must be outside the dataset. `five_view_core.py` provides the original gradient NCC and display preprocessing. `baseline_90.npz` preserves the original full-precision 90° reference scores, with distractors mapped to the frozen candidate order. This analysis file follows the dataset's CC BY 4.0 licence; Python scripts follow MIT.
+
+Each of 2,229 query records is evaluated independently at nominal angles 60°, 75°, 90°, 105° and 120°. Twenty candidates contain its recorded assignment and 19 distractors from the same anatomical subset, sampled with seed 20260920. All views use exactly the same candidates, supplied as `validation/multiview_retrieval/candidate_sets.csv`. Every candidate receives the same transformations and displacement search for a given view. No fusion is used in the manuscript results.
+
+The CT reference is the mean of `crop[10:110,20:140,:]` along array axis 2, followed by transpose and a 1st-to-99.5th percentile window. Radiographs use the same percentile window. Images are resized to 139 rows by 114 columns and converted to normalized gradient magnitudes. Candidate transforms are rotations 0, ±3°, ±6° at unit magnification and 0, ±6° at 1.08 magnification. Gradient NCC is maximized over these variants and translations. Horizontal limits are ±20 working pixels; vertical limits are ±62, ±50, ±27, ±50 and ±62 pixels at the respective five angles. These limits implement an empirical angle-dependent displacement search, rather than a calibrated source trajectory or object-space scale.
+
+The original 90° settings were developed on 255 records from a 511-record sample. For the four additional views, 13 reference/projection/search configurations were compared on 80 queries, 20 per anatomical subset, drawn from the 445 records in fold 0. The selected configuration is `angle_shift_axis1_factor1`. Candidate pools draw from the complete release. Full-release results include the development records. See `development_queries.json`, `development_model_protocol.json` and `development_model_selection.json` in the data release for all model comparisons and query identifiers. The separate finite-source experiment is not used for the manuscript results.
+
+Rank equals one plus the number of distractors with strictly higher score. Top-k is the fraction of queries with rank at most k. Full-release Top-1 percentages are 34.1, 61.1, 85.4, 51.1 and 26.6; Top-3 percentages are 60.0, 85.2, 95.6, 78.2 and 51.5. `candidate_scores.npz` has shape (2229,5,20), aligned `ids`, `angles` and `candidate_ids`; slot zero is the recorded assignment. `summary.csv` includes anatomical subsets and `per_record.csv` contains all 11,145 view-specific ranks. These are descriptive retrieval outcomes against recorded assignments.
+
+Reproduce Figure 6 with `python plot_five_view_retrieval.py --dataset <release-root> --out <figure-output>`. It reads the score tensor and metadata, producing vector PDF/SVG and PNG preview files. Panel a shows cumulative retrieval by rank; panel b shows Top-1 by anatomical subset.

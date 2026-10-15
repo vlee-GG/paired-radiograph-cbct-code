@@ -5,7 +5,9 @@ Code for *Paired physically acquired five-view radiographs and cone-beam compute
 ## Scripts
 
 - [`cbct_cut_1.py`](cbct_cut_1.py): generate local CBCT crops from source volumes and coordinate records.
-- [`correspondence_check.py`](correspondence_check.py): reproduce the automated radiograph–CBCT retrieval check.
+- [`five_view_retrieval.py`](five_view_retrieval.py): reproduce full-release retrieval separately for all five views.
+- [`plot_five_view_retrieval.py`](plot_five_view_retrieval.py): reproduce Figure 6.
+- [`correspondence_check.py`](correspondence_check.py): original 90° reference analysis.
 
 ## Quick start
 
@@ -20,7 +22,7 @@ pip install -r requirements.txt
 Run the retrieval check using the dataset directory:
 
 ```bash
-python correspondence_check.py --dataset ../physionet-paired-radiograph-cbct --out ./results
+python five_view_retrieval.py --dataset ../physionet-paired-radiograph-cbct --out ./results
 ```
 
 Generate crops using source NIfTI volumes and coordinate TXT files arranged in the acquisition-folder layout:
@@ -37,9 +39,9 @@ The dataset contains **2,229 paired records**, five radiographic views per recor
 
 PhysioNet publication and the dataset DOI are pending. The intended access procedure requires user identification and contributor review, subject to PhysioNet approval.
 
-With the default settings, the retrieval check uses 19 distractors per record and yields **Top-1 85.4%**, **Top-3 95.6%** and **AUC 0.958**.
+All 2,229 records are evaluated separately at 60°, 75°, 90°, 105° and 120°, using the same 20 CT candidates per record. Full-release Top-1 rates are **34.1%, 61.1%, 85.4%, 51.1% and 26.6%**, respectively. See [five_view_summary.csv](five_view_summary.csv) and [METHODS.md](METHODS.md).
 
-Image-quality review covers all five views; this automated retrieval check uses the **90° view**. It measures consistency of approximate anatomical correspondence, without calibrated pixel-to-voxel registration. CBCT intensities are not calibrated Hounsfield units. Historical review images contain invalid scale annotations; see [review display limitations](METHODS.md#blinded-review-materials-in-the-data-release).
+Full scores, candidate assignments and record-level ranks are distributed with the dataset under `validation/multiview_retrieval/`. Parameter selection and the approximate-correspondence scope are documented in METHODS.md.
 
 ## Licence and citation
 
