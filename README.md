@@ -24,6 +24,10 @@ python five_view_retrieval.py --dataset ../physionet-paired-radiograph-cbct --ou
 python cbct_cut_1.py --nii-root ../ct_nii --txt-root ../set --out ./crops
 ```
 
+The detector recomputes all five angles from current images and verifies input hashes; stored scores are not used. Outputs must be outside the dataset directory.
+
+Latest full-release Top-1 (%) at 60°/75°/90°/105°/120°: **34.2 / 61.7 / 86.0 / 51.6 / 26.7** (16 October 2026).
+
 Use `--help` for options. [Methods and input details](docs/METHODS.md) · [Reference results](reference/five_view_summary.csv).
 
 Imaging data are distributed separately; the PhysioNet deposit is pending. Full scores and ranks accompany the dataset under `validation/multiview_retrieval/`.
