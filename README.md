@@ -2,6 +2,8 @@
 
 Two programs for the rabbit and mouse dataset: **CBCT cropping** and **five-view retrieval**.
 
+Supporting processing/QC code, curated inputs and tests: [release-tools archive](archive/release_tools_20261016.zip).
+
 ## Install
 
 Python **3.10+**:
