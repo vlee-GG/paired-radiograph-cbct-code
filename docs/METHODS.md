@@ -10,7 +10,7 @@ Run commands from the repository root. The main program is `five_view_retrieval.
 python five_view_retrieval.py --dataset <release-root> --out <new-output> --workers 2
 ```
 
-The output directory must be outside the dataset. Output includes `candidate_scores.npz` and `summary.csv`. `--queries <sample-id-csv>` and `--cache <descriptor-cache>` support reproduction spot checks; use a fresh output directory for each run.
+The output directory must be outside the dataset. Output includes `candidate_scores.npz` and `summary.csv`. Use `--workers` and `--fft-workers` to control CPU concurrency. Use a fresh output directory for each image snapshot; interrupted computation can resume only against the same frozen inputs.
 
 All 2,229 records are evaluated separately at nominal angles 60°, 75°, 90°, 105° and 120°. Each uses its recorded CT assignment and 19 distractors from the same anatomical subset, with seed 20260920. All views use the identical candidate sets supplied in `validation/multiview_retrieval/candidate_sets.csv` in the data release. Candidate slot zero is the recorded assignment. No view fusion enters the reported results.
 
@@ -20,7 +20,7 @@ The original 90° settings were developed on 255 records from a 511-record sampl
 
 Rank is one plus the number of distractors with a strictly higher score. Top-k is the fraction of queries with rank at most k. [Reference results](../reference/five_view_summary.csv) contain full-release counts and percentages. Complete scores have shape `(2229, 5, 20)`, with aligned `ids`, `angles` and `candidate_ids`; the dataset's `per_record.csv` contains 11,145 view-specific rows. These scores describe retrieval among the specified candidates. The displacement search is empirical and does not provide calibrated registration error.
 
-`reference/baseline_90.npz` preserves the original full-precision 90° scores. Its location is resolved relative to the script, so no manual path editing is required. Set `PAIRED_BASELINE90` to use another copy.
+`reference/baseline_90.npz` contains the 90° slice of the current 16 October 2026 analysis, for reference only. The detector recomputes every angle directly from the images; it does not load these reference scores. Input SHA-256 and sizes are checked against both metadata and the frozen release manifest. Output directories must be outside the dataset. The current run scored 222,900 comparisons; an independent angle-first loop checked 800 scores with a maximum difference of 2.23e-16.
 
 ## CBCT cropping
 
@@ -37,7 +37,7 @@ In the released dataset, `crop_index_in_source` numbers retained crops and can d
 
 ## Data and review materials
 
-Imaging data are supplied separately. PhysioNet publication and the dataset DOI are pending; the intended access procedure requires identification and contributor review, subject to platform approval. The working package contains 14,783 files (46.44 GiB), including 335 source CBCT volumes, 2,229 local crops and 11,145 radiographs. Metadata-building and historical acquisition-processing scripts are not included in this code repository.
+Imaging data are supplied separately. PhysioNet publication and the dataset DOI are pending; the intended access procedure requires identification and contributor review, subject to platform approval. The working package contains 14,785 files (46.44 GiB), including 335 source CBCT volumes, 2,229 local crops and 11,145 radiographs. Metadata-building and historical acquisition-processing scripts are not included in this code repository.
 
 The blinded-review generator, per-case section indices and display windows accompany the dataset in `validation/anatomical_review/`. Sections maximize the fraction of voxels above 300 rescaled units; display windows are 3–59,745 for radiographs and approximately −1,000–1,780 for CBCT. The historical composites retain invalid scale annotations and are for qualitative review, not distance measurement. CBCT values are not calibrated Hounsfield units, and nominal angles alone do not specify calibrated projection geometry.
 
