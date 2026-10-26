@@ -32,6 +32,6 @@ Latest full-release Top-1 (%) at 60°/75°/90°/105°/120°: **34.2 / 61.7 / 86.
 
 Use `--help` for options. [Methods and input details](docs/METHODS.md) · [Reference results](reference/five_view_summary.csv).
 
-Imaging data are distributed separately; the PhysioNet deposit is pending. Full scores and ranks accompany the dataset under `validation/multiview_retrieval/`. Validation evidence is organized into four directories: coordinate readings, release QC, anatomical review and five-view retrieval. Supporting tools use the current `validation/release_qc/` paths (18 October 2026).
+Imaging data are distributed separately; the PhysioNet deposit is pending. Full scores and ranks accompany the dataset under `validation/multiview_retrieval/`. Validation evidence is organized into four directories: coordinate readings, release QC, anatomical review and five-view retrieval. The data package contains 14,768 files, including 707 validation files. Numerical checks are consolidated in `validation/release_qc/qc_summary.json`; development records are in `validation/multiview_retrieval/development.json`.
 
 Code: [MIT](LICENSE). Dataset and reference analysis files: CC BY 4.0. Please cite the accompanying data paper and this repository. Checksums: [reference/MANIFEST_SHA256.txt](reference/MANIFEST_SHA256.txt), with paths relative to the repository root.
