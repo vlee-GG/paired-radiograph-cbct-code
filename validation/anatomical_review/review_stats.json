@@ -1,0 +1,236 @@
+{
+  "study_id": "blinded_review_20261016",
+  "analysis_version": "first_confirmed_submission",
+  "n_unique_cases": 300,
+  "original_pairs": 250,
+  "substituted_controls": 50,
+  "training_per_reader": 20,
+  "formal_presentations_per_reader": 315,
+  "hidden_repeat_pairs_per_reader": 15,
+  "reader_backgrounds": {
+    "reader1": "Orthopaedic clinician with three years of clinical experience at a county-level hospital.",
+    "reader2": "Clinician practising in a dental clinic."
+  },
+  "denominator": "300 distinct formal composites, using the first actual exposure of each composite and answers saved at the first confirmed final submission. Uncertain answers remain in every denominator.",
+  "reference_classes": "Recorded original pair versus same-source spatially non-overlapping substituted CT crop.",
+  "readers": {
+    "reader1": {
+      "n": 300,
+      "by_reference_class": {
+        "original": {
+          "n": 250,
+          "yes": 246,
+          "no": 1,
+          "uncertain": 3
+        },
+        "substituted": {
+          "n": 50,
+          "yes": 2,
+          "no": 41,
+          "uncertain": 7
+        }
+      },
+      "label_agreement_n": 287,
+      "label_agreement": 0.9566666666666667,
+      "uncertain": 10,
+      "hidden_repeat_agreement_n": 15,
+      "partition_cluster_CI": {
+        "clusters": 95,
+        "replicates": 20000,
+        "seed": 20261020,
+        "intervals": {
+          "overall": [
+            0.9354838709677419,
+            0.9764309764309764
+          ],
+          "original_yes": [
+            0.968,
+            0.99609375
+          ],
+          "substituted_no": [
+            0.7058823529411765,
+            0.9183673469387755
+          ],
+          "balanced": [
+            0.8457127631652427,
+            0.9510857494454883
+          ]
+        }
+      },
+      "source_cluster_CI": {
+        "clusters": 251,
+        "replicates": 20000,
+        "seed": 20261020,
+        "intervals": {
+          "overall": [
+            0.9329073482428115,
+            0.9772727272727273
+          ],
+          "original_yes": [
+            0.9670781893004116,
+            0.9961240310077519
+          ],
+          "substituted_no": [
+            0.7068965517241379,
+            0.9215686274509803
+          ],
+          "balanced": [
+            0.8450515844342062,
+            0.9530684226421675
+          ]
+        }
+      }
+    },
+    "reader2": {
+      "n": 300,
+      "by_reference_class": {
+        "original": {
+          "n": 250,
+          "yes": 168,
+          "no": 24,
+          "uncertain": 58
+        },
+        "substituted": {
+          "n": 50,
+          "yes": 1,
+          "no": 49,
+          "uncertain": 0
+        }
+      },
+      "label_agreement_n": 217,
+      "label_agreement": 0.7233333333333334,
+      "uncertain": 58,
+      "hidden_repeat_agreement_n": 11,
+      "partition_cluster_CI": {
+        "clusters": 95,
+        "replicates": 20000,
+        "seed": 20261020,
+        "intervals": {
+          "overall": [
+            0.6646153846153846,
+            0.7785473306969847
+          ],
+          "original_yes": [
+            0.6061942631632897,
+            0.7368421052631579
+          ],
+          "substituted_no": [
+            0.9318181818181818,
+            1.0
+          ],
+          "balanced": [
+            0.7883921568627451,
+            0.8614457831325302
+          ]
+        }
+      },
+      "source_cluster_CI": {
+        "clusters": 251,
+        "replicates": 20000,
+        "seed": 20261020,
+        "intervals": {
+          "overall": [
+            0.6701388888888888,
+            0.7727272727272727
+          ],
+          "original_yes": [
+            0.6104417670682731,
+            0.7298387096774194
+          ],
+          "substituted_no": [
+            0.9318181818181818,
+            1.0
+          ],
+          "balanced": [
+            0.7896844939168747,
+            0.8586171310629515
+          ]
+        }
+      }
+    }
+  },
+  "between_readers": {
+    "n": 300,
+    "agree": 211,
+    "disagree": 89,
+    "agreement": 0.7033333333333334,
+    "kappa": 0.3992169569326314,
+    "AC1_3category": 0.6128597268993617,
+    "matrix": [
+      [
+        169,
+        21,
+        58
+      ],
+      [
+        0,
+        42,
+        0
+      ],
+      [
+        0,
+        10,
+        0
+      ]
+    ],
+    "categories": [
+      "yes",
+      "no",
+      "uncertain"
+    ]
+  },
+  "author_followup": {
+    "study_id": "author_followup_91_20261025",
+    "cases_reviewed": 91,
+    "original_pairs": 82,
+    "substituted_controls": 9,
+    "reviewers": [
+      "滕宏"
+    ],
+    "record_finalised_on": "2026-10-25",
+    "case_level_outcomes_provided": true,
+    "case_level_table": "author_review_records.csv",
+    "outcomes_by_reference_class": {
+      "original": {
+        "corresponding": 82
+      },
+      "substituted": {
+        "different": 9
+      }
+    },
+    "basis_counts": {
+      "difference": 9,
+      "bone": 75,
+      "joint": 34
+    },
+    "basis_options": {
+      "bone": "Similar bony contours or trajectories",
+      "joint": "Compatible joint morphology or relative anatomical relationships",
+      "difference": "Visible structural differences",
+      "limited": "Insufficient displayed information"
+    },
+    "primary_materials": "Panels A (90-degree radiograph) and B (CBCT maximum-intensity projection).",
+    "reference_labels_available": true,
+    "first_submission_answers_available": true,
+    "original_scores_replaced": false,
+    "interpretation": "Descriptive unblinded author follow-up of all cases with at least one label-discordant or uncertain answer, separate from the blinded first-submission analysis.",
+    "unresolved_basis_cases": [],
+    "reference_label_agreement_n": 91,
+    "reference_label_agreement_denominator": 91,
+    "reference_label_agreement_percent": 100.0,
+    "review_dates": [
+      "2026-10-24",
+      "2026-10-25"
+    ],
+    "scope": "At least one reader answer differed from the reference label, including uncertain responses.",
+    "scope_counts": {
+      "between_reader_disagreements": 89,
+      "shared_reference_deviations": 2
+    },
+    "shared_reference_deviation_cases": [
+      "c0065",
+      "c0280"
+    ]
+  },
+  "uncertainty": "20,000 percentile bootstrap resamples of query partition units, seed 20261020; source-volume clustering supplied as sensitivity analysis."
+}

@@ -1,0 +1,86 @@
+{
+  "analysis": "fresh_five_view_independent_full_release",
+  "created_at": "2026-10-16T04:25:27.935253+00:00",
+  "dataset": ".",
+  "dataset_fingerprints": {
+    "metadata/metadata.csv": "3f3d191fd65dea9096b7f4e6ca71bf44c39d37882ec5aded3953f561a8a5f66e",
+    "metadata/files.csv": "159fc374ba3b045ac65442276f17aadfb6afde27f71fe2f5c72e278dff116f01",
+    "metadata/partition_units.csv": "6b2f092c65a85bfef5d2ec8adc637bcddff93773f92d0a5eaee51cd8802a9692",
+    "metadata/splits/example_5fold_by_partition_unit.csv": "5ea15f745d0dd12fc89eaf6516e66fe79bcaa01bb2a9dc2ac8e4d141ff358547",
+    "SHA256SUMS.txt": "6a9723a390d1907cfe754409e3139465d70a667c75ca8eda005dbf01d0be87af",
+    "validation/multiview_retrieval/candidate_sets.csv": "7f11d128332cab904d2487d5ac3307253e94c0a7aba0eb6469ff1556016add6c"
+  },
+  "angles": [
+    60,
+    75,
+    90,
+    105,
+    120
+  ],
+  "candidates_per_query": 20,
+  "seed": 20260920,
+  "working_shape": [
+    139,
+    114
+  ],
+  "fft_shape": [
+    278,
+    228
+  ],
+  "ct_reference": "float32 NIfTI crop mean along axis 2; [10:110,20:140].T; percentile 1-99.5",
+  "radiograph": "decoded float32; percentile 1-99.5; uint8; PIL bilinear resize 114 columns by 139 rows; gradient magnitude",
+  "variants": [
+    [
+      0,
+      1.0
+    ],
+    [
+      -6,
+      1.0
+    ],
+    [
+      6,
+      1.0
+    ],
+    [
+      -3,
+      1.0
+    ],
+    [
+      3,
+      1.0
+    ],
+    [
+      0,
+      1.08
+    ],
+    [
+      -6,
+      1.08
+    ],
+    [
+      6,
+      1.08
+    ]
+  ],
+  "horizontal_shift": 20,
+  "vertical_shift": [
+    62,
+    50,
+    27,
+    50,
+    62
+  ],
+  "rank": "1 + count(distractors strictly greater than recorded assignment)",
+  "parameter_selection": "No tuning or new selection in this rerun; prior published configuration retained.",
+  "fresh_90_recomputation": true,
+  "prior_scores_reused_for_computation": false,
+  "old_image_features_reused": false,
+  "score_dtype": "float64",
+  "scope": "All release queries against the same fixed 20 candidates per record; not exhaustive all-candidate retrieval or calibrated registration.",
+  "parameter_selection_records": [
+    "development.json#/records/development_model_protocol.json/record",
+    "development.json#/records/development_model_selection.json/record",
+    "development.json#/records/development_queries.json/record"
+  ]
+}

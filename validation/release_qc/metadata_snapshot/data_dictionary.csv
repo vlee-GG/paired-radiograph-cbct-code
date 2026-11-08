@@ -1,0 +1,238 @@
+table,field,type,units,allowed_values,missing_value_convention,notes
+metadata.csv,sample_id,string,-,^rab_s[0-9]{4}$ 或 ^mou_s[0-9]{3}$,必填,主键；一条配对记录 = 5 张放射图像 + 1 个裁剪块
+metadata.csv,data_group_id,string,-,见 groups.csv,必填,二级分组单元；外键 -> groups.csv
+metadata.csv,species,string,-,rabbit | mouse,必填,
+metadata.csv,anatomical_region,string,-,limb_unspecified | maxillary | mandibular | unspecified,必填,兔头部只能区分上颌/下颌；兔肢体不区分前后肢与左右
+metadata.csv,animal_id,string,-,^rab_a[0-9]{2}$ 或 ^mou_a[0-9]{2}$,空 = 不可验证,仅在动物身份可验证时填写；兔头部452条记录中44条已有验证关联（上颌25条、下颌19条），其余408条为空并标记not_linkable。
+metadata.csv,animal_linkage_status,string,-,verified | not_linkable,必填,空 animal_id 时为 not_linkable
+metadata.csv,specimen_id,string,-,^rab_p[0-9]{3}$ 或 ^mou_p[0-9]{2}$,必填,一个物理标本；本数据里 1 个源体积 = 1 个标本扫描 1 次
+metadata.csv,source_volume_id,string,-,^rab_v[0-9]{3}$ 或 ^mou_v[0-9]{2}$,必填,外键 -> source_cbct/
+metadata.csv,acquisition_day_id,string,-,^rab_d[0-9]{2}$ 或 ^mou_d[0-9]{2}$,必填,采集日；同一日的记录共享采集条件
+metadata.csv,n_radiographs,int,张,5,必填,恒为 5
+metadata.csv,nominal_angles_deg,string,度,60;75;90;105;120,必填,标称角度；不构成投影矩阵
+metadata.csv,crop_index_in_source,int,-,>=1,必填,"该裁剪块在所属源体积【已发布记录】中的序号，从 1 起；335 个体积均为连续的 1..n。注意：这不是源体积坐标文件里目标点的序号。坐标文件按采集顺序列出全部轮次，若某体积丢弃了轮次，保留的记录会被重新编号，两者即不再相等。324 个体积中两者相同；11 个体积（mou_v07, mou_v08, mou_v09, mou_v12, rab_v004, rab_v029, rab_v030, rab_v032, rab_v044, rab_v067, rab_v184）中不一致。其中 mou_v09 与 rab_v044 丢弃第 1 轮、rab_v032 第 2 轮、rab_v004 第 4 轮、rab_v030 第 7 轮，丢弃点不在末尾，故这 5 个体积中共 20 条记录的实际坐标目标序号比本字段大 1；其余 6 个体积丢弃的是末尾轮次，两者仍相同。需要坐标目标序号时，用该记录的 crop_origin_i / crop_origin_j 与坐标文件中的目标点逐条比对确定，不要直接使用本字段。"
+metadata.csv,n_crops_in_source,int,-,3-10,必填,该源体积【已发布】的记录（裁剪块）数，等于该体积在 metadata.csv 中的行数，取值为 3-10。这是发布后的数量，不含被剔除、未发布的采集轮次（全库共 15 轮），因此可能小于该体积坐标文件中的目标点数。
+metadata.csv,crop_origin_i,int,voxel,>=0,空 = 待补,裁剪块在【发布的完整源体积】数组第 1 轴上的起点（零基）。由该体积坐标文件中某个目标点按内部换算公式得到；目标点与本记录的对应关系见 crop_index_in_source 的说明。
+metadata.csv,crop_origin_j,int,voxel,>=0,空 = 待补,裁剪块在【发布的完整源体积】数组第 2 轴上的起点（零基）。由该体积坐标文件中某个目标点按内部换算公式得到；目标点与本记录的对应关系见 crop_index_in_source 的说明。
+metadata.csv,crop_origin_k,int,voxel,>=0,空 = 待补,第 3 轴起点（零基）
+metadata.csv,retained_shape_i,int,voxel,64-120,空 = 待补,实际保留尺寸第 1 轴；目标为 120
+metadata.csv,retained_shape_j,int,voxel,160,空 = 待补,第 2 轴，目标 160
+metadata.csv,retained_shape_k,int,voxel,140,空 = 待补,第 3 轴，目标 140
+metadata.csv,is_boundary_clipped,bool,-,true | false,空 = 待补,越界被裁掉的记录；共 52 条
+groups.csv,data_group_id,string,-,见文件,必填,主键
+groups.csv,group_type,string,-,animal_verified | head_region_day,必填,分组单元的性质
+groups.csv,acquisition_day_ids,string,-,分号分隔,必填,该组包含的采集日
+groups.csv,n_source_volumes,int,-,>=1,必填,
+groups.csv,n_records,int,-,>=1,必填,
+files.csv,file_id,int,-,>=1,必填,顺序号
+files.csv,record_type,string,-,source_volume | coordinates | radiograph | crop,必填,
+files.csv,sample_id,string,-,见 metadata.csv,体积与坐标记录为空,
+files.csv,source_volume_id,string,-,见 metadata.csv,必填,
+files.csv,data_group_id,string,-,见 groups.csv,必填,
+files.csv,nominal_angle_deg,int,度,60|75|90|105|120,仅 radiograph,
+files.csv,relative_path,string,-,-,必填,相对仓库根，POSIX 分隔符
+files.csv,format,string,-,DICOM | NIfTI | text,必填,
+files.csv,bytes,int,字节,>=1,必填,
+files.csv,sha256,string,-,64 位十六进制,空 = 待补,全量校验和
+INDEXING,axis_order,string,-,i;j;k,-,源体积与裁剪块数组的轴序均为 NIfTI 原始顺序；i=第1轴，j=第2轴，k=第3轴
+INDEXING,origin_convention,string,-,"zero-based, inclusive start, exclusive stop",-,"crop = source[origin_i:origin_i+retained_i, origin_j:..., origin_k:...]"
+INDEXING,origin_reference,string,-,released complete source volume,-,origin 指向【本仓库发布的】完整源体积，不是原始扫描数据；若对裁剪块再次居中裁剪，需把额外偏移累加进 origin
+INDEXING,nominal_angle,int,degree,60|75|90|105|120,-,射线源摆动的标称角度；接收器固定。标称角度不定义投影矩阵
+INDEXING,crop_clipping,string,-,-,-,越界窗口不做 padding，直接裁剪，因此 52 条记录的保留尺寸小于 120x160x140，最小 64
+groups.csv,species,string,-,rabbit | mouse,必填,
+groups.csv,anatomical_region,string,-,limb_unspecified | maxillary | mandibular | unspecified,必填,
+groups.csv,animal_id,string,-,^rab_a[0-9]{2}$ 或 ^mou_a[0-9]{2}$,空 = 不可验证或关联多只已验证动物,仅当该组恰好关联一只已验证动物时填写；不可验证或关联多只动物时留空。全部已验证动物见animal_ids，多对多关联见group_animal_links.csv。
+groups.csv,animal_linkage_status,string,-,verified | not_linkable,必填,与该组内记录一致
+files.csv,role,string,-,source_volume | coordinates | radiograph | crop,必填,与 record_type 同义，便于按角色筛选
+qc_summary.json,validation_steps,object,-,-,必填,按技术验证四步分组的检查汇总；第3步为已完成的300例盲法解剖对应性评估；当前汇总位于validation/release_qc/qc_summary.json
+manual_qc.csv,internal_animal,string,-,见 final_dataset 目录,必填,内部动物目录名
+manual_qc.csv,internal_series,string,-,见 final_dataset 目录,必填,内部系列名
+manual_qc.csv,n_source_volumes,integer,-,1,必填,该系列映射到的源体积数
+manual_qc.csv,source_volume_ids,string,-,^rab_v[0-9]{3}$ 或 ^mou_v[0-9]{2}$,必填,映射后的源体积标识
+manual_qc.csv,n_records,integer,-,3-10,必填,该系列保留的记录数
+manual_qc.csv,review_status,string,-,ok | bad | skip | reject,必填,系列级人工判定；本版 335 行全部为 ok
+manual_qc.csv,note,string,-,自由文本,空 = 无,逐系列备注；本版全部为空
+manual_qc.csv,excluded_cubes,string,-,分号分隔的序号,空 = 无,审核时逐块标记为有问题的 crop；本版全部为空
+manual_qc.csv,excluded_rounds,string,-,分号分隔的序号,空 = 无,审核时逐轮标记为有问题的 X 光轮次；本版全部为空
+manual_qc.csv,reviewer,string,-,authors,必填,执行该系列复核的人员；本版记录为作者团队
+manual_qc.csv,reviewed_at,string,ISO 8601,-,必填,该系列的复核时间戳；不代表操作者身份
+manual_qc.csv,n_bad_cubes,integer,-,>=0,必填,excluded_cubes 的条数，便于筛选；本版全部为 0
+manual_qc.csv,n_bad_rounds,integer,-,>=0,必填,excluded_rounds 的条数，便于筛选；本版全部为 0
+manual_qc.csv,n_orientation_operations,integer,-,>=0,必填,"审核工具在导出时**排队**的逐图朝向操作数，不代表发布文件的实际状态；本版 7 个系列非 0，但该 7 个系列均未落盘。实际矫正见 orientation_rot180_rounds Preserved historical QC snapshot. Round indices are original coordinate-target ordinals, not retained-crop order. Use final_orientation_* for cumulative released status."
+manual_qc.csv,orientation_operations,string,-,轮次_角度=操作+操作;...,空 = 无,排队的逐图朝向操作明细（键为 轮次_角度）；与发布文件的实际状态无关，见 n_orientation_operations
+exclusions.csv,series_internal_id,string,-,-,无,作者内部系列标识，形如 动物/系列。出库的 exclusions.csv 不使用 sample_id：部分被剔除的候选项从未获得发布用 sample_id，只能以内部标识定位；note 列给出逐条说明
+exclusions.csv,target,string,-,radiograph | crop | series,无,被操作的对象
+exclusions.csv,scope,string,-,single_file | record | series,无,操作粒度
+exclusions.csv,record_index,integer,index,>= 1,空 = 系列级,该记录在系列内的序号（重命名前）
+exclusions.csv,item_type,string,-,crop | radiograph | series_dir,无,条目类型
+exclusions.csv,relative_path,string,-,-,无,QC 工作区内的相对路径
+exclusions.csv,last_action,string,-,deleted | restored,无,重放整个 QC 日志后的最终状态；本表只列净剔除项
+exclusions.csv,timestamp,string,ISO 8601,-,无,QC 复核操作时间（非采集日期）
+exclusions.csv,note,string,-,-,空,说明该条是否计入 Data Descriptor 的清点
+groups.csv,animal_ids,string,-,分号分隔的 ^rab_a[0-9]{2}$ / ^mou_a[0-9]{2}$,空 = 无已验证动物,组内已验证动物全集；多对多关系见 metadata/group_animal_links.csv
+groups.csv,n_verified_animals,integer,animals,>= 0,无,组内已验证动物个数；>1 表示该组跨多只动物，不能当作一个独立个体
+group_animal_links.csv,data_group_id,string,-,-,无,组标识
+group_animal_links.csv,animal_id,string,-,-,无,个体标识
+group_animal_links.csv,animal_linkage_status,string,-,verified,无,恒为 verified
+group_animal_links.csv,n_records_from_this_animal,integer,records,>= 1,无,该动物在此组内的记录数
+group_animal_links.csv,anatomical_regions,string,-,-,无,该动物在此组内涉及的区域
+partition_units.csv,partition_unit_id,string,pu_001 …,^pu_[0-9]{3}$,无,保守划分单元：由共享 source / specimen / 已验证 animal / 数据组求连通分量得到
+partition_units.csv,n_groups,integer,groups,>= 1,无,包含的数据组数
+partition_units.csv,group_ids,string,-,-,无,分号分隔的数据组
+partition_units.csv,species,string,-,rabbit | mouse,无,物种
+partition_units.csv,anatomical_regions,string,-,-,无,涉及区域
+partition_units.csv,n_source_volumes,integer,volumes,>= 1,无,源体积数
+partition_units.csv,n_specimens,integer,specimens,>= 1,无,标本数
+partition_units.csv,n_verified_animals,integer,animals,>= 0,0 = 不可链接,单元内已验证动物数
+partition_units.csv,animal_ids,string,-,-,空,分号分隔的个体标识
+partition_units.csv,animal_linkage_status,string,-,verified | not_linkable | mixed,无,单元级动物链接状态
+partition_units.csv,n_records,integer,records,>= 4,无,记录数
+partition_units.csv,sample_id_min,string,-,-,无,最小 sample_id
+partition_units.csv,sample_id_max,string,-,-,无,最大 sample_id
+example_5fold_by_partition_unit.csv,partition_unit_id,string,-,^pu_[0-9]{3}$,必填,分区单元标识，见 partition_units.csv
+example_5fold_by_partition_unit.csv,fold,integer,-,0-4,必填,该单元被分配到的折
+example_5fold_by_partition_unit.csv,n_groups,integer,-,>=1,必填,该单元包含的数据组数
+example_5fold_by_partition_unit.csv,n_source_volumes,integer,-,>=1,必填,该单元包含的源体积数
+example_5fold_by_partition_unit.csv,n_records,integer,-,>=1,必填,该单元包含的记录数
+example_5fold_by_partition_unit.csv,animal_linkage_status,string,-,verified | not_linkable,必填,该单元的动物链接状态；verified 表示单元内全部记录都可链接到已验证动物
+acquisition_devices.csv,modality,string,-,CBCT | Radiograph,无缺失,成像模态
+acquisition_devices.csv,subset,string,-,rabbit | mouse | all,无缺失,该行适用的子集
+acquisition_devices.csv,dicom_modality,string,-,CT | IO,无缺失,源 DICOM 头中的 Modality 值
+acquisition_devices.csv,manufacturer,string,-,LargeV | XPECT,无缺失,DICOM Manufacturer 实测值
+acquisition_devices.csv,manufacturer_model_name,string,-,Smart3DX | not recorded,not recorded,DICOM ManufacturerModelName 实测值
+acquisition_devices.csv,software_versions,string,-,not recorded,not recorded,源 DICOM 头中无 SoftwareVersions 字段
+acquisition_devices.csv,device_serial_number,string,-,0 | not recorded,not recorded,CT 头为占位值 0，放射片头无该字段
+acquisition_devices.csv,reconstruction_type,string,-,CTRecon | not applicable,not applicable,CT 头 ReconstructionType；放射片不适用
+acquisition_devices.csv,reconstruction_software_version,string,-,not recorded | not applicable,not applicable,源头未记录重建软件版本
+acquisition_devices.csv,convolution_kernel,string,-,not recorded | not applicable,not applicable,源头未记录卷积核/重建方法
+acquisition_devices.csv,tube_voltage_kv,number,kV,80 | 60 | 65,无缺失,CT 头 KVP；放射片值来自实验室采集记录
+acquisition_devices.csv,tube_current_time_mas,number,mAs,60 | not applicable,not applicable,来自实验室采集记录，CT 头中无 mAs 字段
+acquisition_devices.csv,exposure_settings,string,-,2.6 mA; 0.1 s per exposure | not applicable,not applicable,放射片单次曝光设置
+acquisition_devices.csv,device_identity_source,string,-,free text,无缺失,设备身份各字段的出处
+acquisition_devices.csv,settings_source,string,-,free text,无缺失,曝光各字段的出处
+acquisition_devices.csv,notes,string,-,free text,无缺失,补充说明与已知限制
+release_validation.csv,data_group_id,string,-,见 groups.csv,必填,该源体积所属数据组
+release_validation.csv,source_volume_id,string,-,^rab_v[0-9]{3}$ 或 ^mou_v[0-9]{2}$,必填,源体积标识
+release_validation.csv,n_coordinate_targets,integer,-,>=1,必填,"该源体积坐标记录中照片推导出的目标点数，即可以放置裁窗的记录数；合计 2,244"
+release_validation.csv,n_not_released,integer,-,>=0,必填,有坐标目标但未进入发布的记录数 = n_coordinate_targets - n_retained_records；合计 15，分布在 11 个源体积
+release_validation.csv,n_radiograph_rounds,integer,-,>=1,必填,X 光轮次数
+release_validation.csv,n_paired_records,integer,-,>=1,必填,配对记录数
+release_validation.csv,n_retained_records,integer,-,>=0,必填,"进入发布的记录数；合计 2,229"
+release_validation.csv,status,string,-,retained,必填,该源体积的发布状态
+figure_provenance.csv,figure,string,-,Fig. 2,必填,该行所属的图；本版只有 Fig. 2 的四个面板
+figure_provenance.csv,panel,string,-,a | b | c | d | row a | row b | row c,必填,图内面板标签
+figure_provenance.csv,sample_id,string,-,^rab_s[0-9]{4}$ | ^mou_s[0-9]{3}$,空 = 基准示例无发布标识,发布记录标识
+figure_provenance.csv,source_volume_id,string,-,^rab_v[0-9]{3}$ | ^mou_v[0-9]{2}$,空 = 基准示例,源体积标识
+figure_provenance.csv,data_group_id,string,-,见 groups.csv,空 = 基准示例,数据组标识
+figure_provenance.csv,record_note,string,-,自由文本,空 = 无,该行的说明，例如哪一类标本或哪个历史编号
+figure_provenance.csv,slice_index_rule,string,-,自由文本,必填,选取所显示层面的规则，例如「参考体素中位数向上取整」
+figure_provenance.csv,display_window,string,-,自由文本,必填,该行使用的显示窗
+figure_provenance.csv,notes,string,-,自由文本,空 = 无,附加说明
+figure_provenance.csv,mip_axis,integer,-,1-3,空 = 非投影行,最大强度投影所沿的体数据轴
+figure_provenance.csv,section_index_axis1,integer,voxel,>=0,空 = 非切面行,所显示切面在第 1 轴上的索引
+figure_provenance.csv,section_index_axis2,integer,voxel,>=0,空 = 非切面行,所显示切面在第 2 轴上的索引
+figure_provenance.csv,section_index_axis3,integer,voxel,>=0,空 = 非切面行,所显示切面在第 3 轴上的索引
+figure_provenance.csv,ct_window_low,number,重标定单位,见 display_window,空 = 非 CT 行,CT 显示窗下限
+figure_provenance.csv,ct_window_high,number,重标定单位,见 display_window,空 = 非 CT 行,CT 显示窗上限
+figure_provenance.csv,ct_source_file,string,-,data/ 下的相对路径,空 = 非 CT 行,生成该行图像所用的发布文件
+figure_provenance.csv,verification,string,-,自由文本,必填,该行图像的核验状态；含未确认事项时在此写明
+release_qc/qc_summary.json#/supporting_checks/partition_overlap_check/rows,fold_pair,string,-,i-j,无,折对; 保存在QC汇总的supporting_checks.partition_overlap_check.rows中；CSV字符串保留原值。
+release_qc/qc_summary.json#/supporting_checks/partition_overlap_check/rows,shared_data_groups,integer encoded as CSV string,groups,= 0,无,折间共享组数; 保存在QC汇总的supporting_checks.partition_overlap_check.rows中；CSV字符串保留原值。
+release_qc/qc_summary.json#/supporting_checks/partition_overlap_check/rows,shared_source_volumes,integer encoded as CSV string,volumes,= 0,无,折间共享源体积数; 保存在QC汇总的supporting_checks.partition_overlap_check.rows中；CSV字符串保留原值。
+release_qc/qc_summary.json#/supporting_checks/partition_overlap_check/rows,shared_verified_animals,integer encoded as CSV string,animals,= 0,无,折间共享已验证动物数; 保存在QC汇总的supporting_checks.partition_overlap_check.rows中；CSV字符串保留原值。
+release_qc/qc_summary.json#/supporting_checks/partition_overlap_check/rows,shared_specimens,integer encoded as CSV string,specimens,= 0,无,折间共享标本数; 保存在QC汇总的supporting_checks.partition_overlap_check.rows中；CSV字符串保留原值。
+file_qc.csv,relative_path,string,-,-,无,相对路径
+file_qc.csv,role,string,-,source_volume | coordinates | radiograph | crop,无,文件角色
+file_qc.csv,format,string,-,DICOM | NIfTI | text,无,格式
+file_qc.csv,bytes,integer,bytes,> 0,无,字节数
+file_qc.csv,readable,boolean,-,true | false,无,头部是否可无错解析
+file_qc.csv,error,string,-,-,空,读取失败时的错误信息
+file_qc.csv,data_dtype,string,-,-,空(文本),存储数据类型
+file_qc.csv,shape_i,integer,voxels/pixels,> 0,空(文本),第一维
+file_qc.csv,shape_j,integer,voxels/pixels,> 0,空(文本),第二维
+file_qc.csv,shape_k,integer,voxels/pixels,> 0,空(DICOM 单帧),第三维
+file_qc.csv,spacing_i,float,mm,> 0,空(文本),NIfTI voxel spacing; DICOM detector-plane ImagerPixelSpacing (fallback PixelSpacing if absent). Not calibrated object-space spacing.
+file_qc.csv,spacing_j,float,mm,> 0,空(文本),NIfTI voxel spacing; DICOM detector-plane ImagerPixelSpacing (fallback PixelSpacing if absent). Not calibrated object-space spacing.
+file_qc.csv,spacing_k,float,mm,> 0,空(DICOM 单帧),第三维间距
+file_qc.csv,scl_slope,float,-,-,空(DICOM/文本),Effective NIfTI array-proxy scaling coefficient; decimal serialization may be rounded in the release table.
+file_qc.csv,scl_inter,float,-,-,空(DICOM/文本),Effective NIfTI array-proxy scaling coefficient; decimal serialization may be rounded in the release table.
+file_qc.csv,notes,string,-,-,空,备注，例如 spacing 例外
+manual_qc.csv,orientation_rot180_rounds,string,,,empty when the series has no measured rotation,"该系列在发布前被人工施加 180° 平面内方向矫正的轮次（逗号分隔）。矫正发生在系列级复核中，用于把基准翻转+逆时针 90° 之后仍与 CBCT 方向相差 180° 的系列摆正；属刚体平面内旋转，不改变图像内容。与 orientation_operations（工具排队但未落盘的操作）不是同一件事 Preserved historical QC snapshot. Round indices are original coordinate-target ordinals, not retained-crop order. Use final_orientation_* for cumulative released status."
+manual_qc.csv,n_orientation_rot180_views,integer,,,0 when the series has no measured rotation,"该系列经人工 180° 方向矫正的发布版 X 光张数；全库合计 550 张、覆盖 110 条记录（4.9%）、41 个系列 Preserved historical QC snapshot. Round indices are original coordinate-target ordinals, not retained-crop order. Use final_orientation_* for cumulative released status."
+dicom_uid_mapping.csv,relative_path,string,-,see validation/release_qc/PROVENANCE.md,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,sample_id,string,-,see validation/release_qc/PROVENANCE.md,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,source_volume_id,string,-,see validation/release_qc/PROVENANCE.md,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,nominal_angle_deg,integer,-,see validation/release_qc/PROVENANCE.md,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,study_instance_uid,string,-,see validation/release_qc/PROVENANCE.md,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,old_series_instance_uid,string,-,see validation/release_qc/PROVENANCE.md,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,new_series_instance_uid,string,-,see validation/release_qc/PROVENANCE.md,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,old_sop_instance_uid,string,-,see validation/release_qc/PROVENANCE.md,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,new_sop_instance_uid,string,-,see validation/release_qc/PROVENANCE.md,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,old_file_sha256,string,-,SHA-256 hexadecimal,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,new_file_sha256,string,-,SHA-256 hexadecimal,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,pixel_data_sha256,string,-,SHA-256 hexadecimal,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,decoded_pixels_sha256,string,-,SHA-256 hexadecimal,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,old_bytes,integer,bytes,see validation/release_qc/PROVENANCE.md,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,new_bytes,integer,bytes,see validation/release_qc/PROVENANCE.md,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+dicom_uid_mapping.csv,header_repairs_json,string,-,see validation/release_qc/PROVENANCE.md,required; header_repairs_json may be [],UID/header migration provenance; old identifiers are preserved as text and may be nonconformant. Pixel hashes refer to unchanged stored/decoded pixels. Historical 2026-10-13 normalization event only. For final published instances use radiograph_provenance.csv.
+anatomical_review/review_records.csv,audit_id,string,-,^[0-9]{6}$,必填,六位盲法审计号，与发布标识符无关；与 anat_choices.csv 同键
+anatomical_review/review_records.csv,sample_id,string,-,见 metadata.csv,必填,审计号对应的发布记录标识
+anatomical_review/review_records.csv,subset,string,-,limb | maxilla | mandible | mouse,必填,分层抽样的子集
+anatomical_review/review_records.csv,species,string,-,rabbit | mouse,必填,物种
+anatomical_review/review_records.csv,anatomical_region,string,-,limb_unspecified | maxillary | mandibular | unspecified,必填,解剖部位
+anatomical_review/review_records.csv,source_volume_id,string,-,见 metadata.csv,必填,该记录所属源体积
+anatomical_review/review_records.csv,A_judgement,string,-,consistent | uncertain | inconsistent,必填,读者 A 的判定
+anatomical_review/review_records.csv,A_confidence,string,-,low | moderate | high,必填,读者 A 的置信度；每次判定都必须填，不允许空
+anatomical_review/review_records.csv,A_reason_code,string,-,limited_visible_anatomy | superimposition | crop_boundary | orientation_ambiguity | image_quality | apparent_anatomical_mismatch | other,consistent 时留空,读者 A 的原因码；仅 uncertain / inconsistent 需要
+anatomical_review/review_records.csv,B_judgement,string,-,consistent | uncertain | inconsistent,必填,读者 B 的判定
+anatomical_review/review_records.csv,B_confidence,string,-,low | moderate | high,必填,读者 B 的置信度；每次判定都必须填，不允许空
+anatomical_review/review_records.csv,B_reason_code,string,-,limited_visible_anatomy | superimposition | crop_boundary | orientation_ambiguity | image_quality | apparent_anatomical_mismatch | other,consistent 时留空,读者 B 的原因码；仅 uncertain / inconsistent 需要
+anatomical_review/review_records.csv,went_to_adjudication,string,-,yes | no,必填,是否进入第三人裁定；本次审核两名读者全部一致，故全部为 no
+anatomical_review/review_records.csv,C_judgement,string,-,consistent | uncertain | inconsistent,未进入裁定时留空,裁定者判定；本次无裁定，全列为空
+anatomical_review/review_records.csv,C_confidence,string,-,low | moderate | high,未进入裁定时留空,裁定者置信度；本次无裁定，全列为空
+anatomical_review/review_records.csv,C_reason_code,string,-,limited_visible_anatomy | superimposition | crop_boundary | orientation_ambiguity | image_quality | apparent_anatomical_mismatch | other,未进入裁定时留空,裁定者原因码；本次无裁定，全列为空
+anatomical_review/review_records.csv,final_status,string,-,confirmed_approximate_correspondence | uncertain_correspondence | inconsistent_correspondence,必填,记录的最终状态；本次 299 条 confirmed、1 条 uncertain
+coordinate_review/04_analysis/review_records.csv,id,string,-,非空,必填,历史初始裁决分析快照（44保留/16拟更正/3不确定），不是后续回退后的当前发布状态；坐标复核工具内部的记录标识（采集目录/轮次/目标），不是发布标识符；仅用于把本轮第三读与原始工作树对应
+coordinate_review/04_analysis/review_records.csv,pre_review_centre_difference_mm,float,mm,> 2.0,必填,历史初始裁决分析快照（44保留/16拟更正/3不确定），不是后续回退后的当前发布状态；第三读之前的两位读者中心读数之差；本轮全部超过预设的 2 mm 阈值，这正是它们被送去做第三读的原因
+coordinate_review/04_analysis/review_records.csv,third_bottom_cm,float,cm,0-23,必填,历史初始裁决分析快照（44保留/16拟更正/3不确定），不是后续回退后的当前发布状态；第三读者读出的下边缘板面坐标（对应下边缘坐标轴）
+coordinate_review/04_analysis/review_records.csv,third_right_cm,float,cm,0-28,必填,历史初始裁决分析快照（44保留/16拟更正/3不确定），不是后续回退后的当前发布状态；第三读者读出的右边缘板面坐标（对应右边缘坐标轴）
+coordinate_review/04_analysis/review_records.csv,decision,string,-,retain_existing | correct_to_new | coordinate_uncertain,必填,历史初始裁决分析快照（44保留/16拟更正/3不确定），不是后续回退后的当前发布状态；第三读者的裁定：保留原坐标 / 采用新读数 / 标记为不确定；全库 63 条中分别为 44 / 16 / 3
+coordinate_review/04_analysis/review_records.csv,reason,string,-,existing_reading_incorrect | new_reading_incorrect,必填,历史初始裁决分析快照（44保留/16拟更正/3不确定），不是后续回退后的当前发布状态；裁定所依据的判断：原读数有误，或新读数有误
+coordinate_review/04_analysis/review_records.csv,final_bottom_cm,float,cm,0-23,必填,历史初始裁决分析快照（44保留/16拟更正/3不确定），不是后续回退后的当前发布状态；裁定后生效的下边缘板面坐标；retain_existing 时等于原读数
+coordinate_review/04_analysis/review_records.csv,final_right_cm,float,cm,0-28,必填,历史初始裁决分析快照（44保留/16拟更正/3不确定），不是后续回退后的当前发布状态；裁定后生效的右边缘板面坐标；retain_existing 时等于原读数
+radiograph_provenance.csv,relative_path,string,-,-,required,POSIX path relative to release root.
+radiograph_provenance.csv,sample_id,string,-,-,required,Released paired-record identifier.
+radiograph_provenance.csv,source_volume_id,string,-,-,required,Released reconstructed source-volume identifier.
+radiograph_provenance.csv,nominal_angle_deg,integer,degrees,-,required,"Nominal acquisition angle: 60,75,90,105,120."
+radiograph_provenance.csv,coordinate_target_index,integer,1-based ordinal,-,required,Original coordinate target after the two reference rows; can differ from retained-crop ordinal after exclusions.
+radiograph_provenance.csv,base_transform,string,-,-,required,Author-reported transformation from acquisition-system export; not independently reconstructable without the exports.
+radiograph_provenance.csv,historical_extra_rot180,boolean,-,true;false,required,"Extra 180-degree rotation recorded in original manual QC, matched using coordinate-target ordinal."
+radiograph_provenance.csv,later_rot180_hash_verified,boolean,-,true;false,required,Inverse 180-degree rotation of current pixel bytes exactly equals historical normalization pixel hash.
+radiograph_provenance.csv,final_extra_rot180,boolean,-,true;false,required,Cumulative extra rotation parity relative to the author-reported base transform: historical XOR later.
+radiograph_provenance.csv,normalized_snapshot_sop_uid,string,-,-,required,SOP UID assigned in the historical 2026-10-13 normalization event.
+radiograph_provenance.csv,normalized_snapshot_file_sha256,string,-,-,required,SHA-256 of whole DICOM file in the historical normalized snapshot.
+radiograph_provenance.csv,normalized_snapshot_pixel_sha256,string,-,-,required,SHA-256 of stored PixelData bytes in the historical normalized snapshot.
+radiograph_provenance.csv,final_sop_uid,string,-,-,required,SOP UID of the final released instance.
+radiograph_provenance.csv,final_file_sha256,string,-,-,required,SHA-256 of whole DICOM file in the final released instance.
+radiograph_provenance.csv,final_pixel_sha256,string,-,-,required,SHA-256 of stored PixelData bytes in the final released instance.
+radiograph_provenance.csv,final_bytes,integer,bytes,-,required,Whole-file size of final released instance.
+radiograph_provenance.csv,provenance_basis,string,-,-,required,Basis and scope of transform bookkeeping; does not certify anatomical direction.
+orientation_events.csv,sample_id,string,-,-,required,Released paired-record identifier.
+orientation_events.csv,source_volume_id,string,-,-,required,Released reconstructed source-volume identifier.
+orientation_events.csv,nominal_angle_deg,integer,degrees,-,required,"Nominal acquisition angle: 60,75,90,105,120."
+orientation_events.csv,retained_crop_index,integer,1-based ordinal,-,required,Retained-crop order as crop_index_in_source in metadata.csv.
+orientation_events.csv,coordinate_target_index,integer,1-based ordinal,-,required,Original coordinate target after the two reference rows; can differ from retained-crop ordinal after exclusions.
+orientation_events.csv,operation,string,-,-,required,Hash-supported later array transform: rot180.
+orientation_events.csv,operation_timestamp,string,-,-,empty = unknown,Original operation timestamp is unknown; documentation date must not be substituted.
+orientation_events.csv,operation_actor,string,-,-,empty = unknown,Original operation actor is unknown.
+orientation_events.csv,documented_on,string,ISO 8601 date,-,required,"Date of retrospective documentation, not date of image editing or review."
+orientation_events.csv,evidence,string,-,-,required,Transform comparison used to identify the later operation.
+orientation_events.csv,historical_normalized_file_sha256,string,-,-,required,SHA-256 of whole DICOM file in the historical normalized snapshot.
+orientation_events.csv,historical_pixel_sha256,string,-,-,required,SHA-256 of stored PixelData bytes in the historical normalized snapshot.
+orientation_events.csv,final_pixel_sha256,string,-,-,required,SHA-256 of stored PixelData bytes in the final released instance.
+orientation_events.csv,final_instance_uid,string,-,-,required,SOP UID of the final orientation version.
+orientation_events.csv,review_status,string,-,-,required,retrospective_transform_verification_only; not a new anatomical judgement.
+manual_qc.csv,final_orientation_rot180_target_indices,string,1-based ordinals,-,empty = no corrected targets,Comma-separated coordinate-target ordinals having cumulative extra rot180; empty means none. NOT retained-crop ordinals.
+manual_qc.csv,n_final_orientation_rot180_views,integer,radiographs,-,required,Five times the number of final corrected coordinate targets in this source series.
+manual_qc.csv,final_orientation_documented_on,string,ISO 8601 date,-,required,Date final orientation bookkeeping was documented; original reviewed_at is preserved.
+manual_qc.csv,final_orientation_evidence,string,-,-,required,Paths to retrospective orientation evidence and final-instance provenance.

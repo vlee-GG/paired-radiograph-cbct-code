@@ -1,0 +1,2364 @@
+{
+  "_release_context": {
+    "scope": "coordinate_workflow_export_including_two_reversions",
+    "observed_on": "2026-10-14",
+    "observed_decision_counts": {
+      "correct_to_new": 14,
+      "retain_existing": 46,
+      "coordinate_uncertain": 3
+    },
+    "current_release": {
+      "release_version": "1.0.0",
+      "documentation_as_of": "2026-10-14",
+      "initial_proposed_corrections": 16,
+      "proposed_corrections_in_release": 15,
+      "applied_to_release": 13,
+      "reverted_to_existing": 2,
+      "not_in_release": 1,
+      "workflow_export_decisions": {
+        "correct_to_new": 14,
+        "retain_existing": 46,
+        "coordinate_uncertain": 3
+      },
+      "published_coordinate_authority": "source_cbct/**/*__coordinates.txt",
+      "published_crop_origins": "metadata/metadata.csv",
+      "current_release_summary": "validation/release_qc/qc_summary.json",
+      "release_validation_evidence": "validation/release_qc/release_validation.csv",
+      "crop_reextraction_evidence": "validation/release_qc/qc_summary.json#/checks/crop_origin_verification",
+      "interpretation": "Workflow downstream flags describe their recorded export, not the later full-release crop re-extraction. They have not been retroactively set to true."
+    },
+    "uncertain_final_coordinate": "All three remain null; historical target_final export used third-reader values under its separately preserved rule.",
+    "timestamp_note": "Original created_at and last_working_sync_at fields are retained; they do not establish when every later release-curation update occurred."
+  },
+  "schema_version": 1,
+  "created_at": "2026-09-21T09:12:25.108366+00:00",
+  "source": "manual_verification/working",
+  "threshold_mm": 2,
+  "records": [
+    {
+      "id": "623mouse/623mouse2/DSC_7655.JPG",
+      "root": "623mouse",
+      "folder": "623mouse2",
+      "image": "DSC_7655.JPG",
+      "row_index": 1,
+      "existing": {
+        "bottom_cm": 7.55,
+        "right_cm": 8.3
+      },
+      "new": {
+        "bottom_cm": 7.8,
+        "right_cm": 10.2
+      },
+      "pre_review_centre_difference_mm": 19.163767896736786,
+      "third": {
+        "bottom_cm": 7.65,
+        "right_cm": 10.2
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T09:29:26.917698+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T09:39:57.339940+00:00",
+      "final_coordinate": {
+        "bottom_cm": 7.8,
+        "right_cm": 10.2
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": true,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": true
+      }
+    },
+    {
+      "id": "623mouse/623mouse4/DSC_7675.JPG",
+      "root": "623mouse",
+      "folder": "623mouse4",
+      "image": "DSC_7675.JPG",
+      "row_index": 1,
+      "existing": {
+        "bottom_cm": 8.8,
+        "right_cm": 12.05
+      },
+      "new": {
+        "bottom_cm": 8.9,
+        "right_cm": 11.1
+      },
+      "pre_review_centre_difference_mm": 9.55248658727141,
+      "third": {
+        "bottom_cm": 8.8,
+        "right_cm": 11.05
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T09:33:41.985599+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T09:40:53.928309+00:00",
+      "final_coordinate": {
+        "bottom_cm": 8.9,
+        "right_cm": 11.1
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": true,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": true
+      }
+    },
+    {
+      "id": "623mouse/623mouse5/DSC_7691.JPG",
+      "root": "623mouse",
+      "folder": "623mouse5",
+      "image": "DSC_7691.JPG",
+      "row_index": 7,
+      "existing": {
+        "bottom_cm": 1.8,
+        "right_cm": 11.05
+      },
+      "new": {
+        "bottom_cm": 2.23,
+        "right_cm": 10.96
+      },
+      "pre_review_centre_difference_mm": 4.393176527297758,
+      "third": {
+        "bottom_cm": 1.8,
+        "right_cm": 11.05
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T09:48:02.887754+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T09:48:18.789261+00:00",
+      "final_coordinate": {
+        "bottom_cm": 1.8,
+        "right_cm": 11.05
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "623mouse/623mouse8/DSC_7719.JPG",
+      "root": "623mouse",
+      "folder": "623mouse8",
+      "image": "DSC_7719.JPG",
+      "row_index": 6,
+      "existing": {
+        "bottom_cm": 5.3,
+        "right_cm": 9.4
+      },
+      "new": {
+        "bottom_cm": 4.4,
+        "right_cm": 9.5
+      },
+      "pre_review_centre_difference_mm": 9.05538513813741,
+      "third": {
+        "bottom_cm": 4.3,
+        "right_cm": 9.38
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T09:49:04.373085+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T09:49:35.497522+00:00",
+      "final_coordinate": {
+        "bottom_cm": 4.4,
+        "right_cm": 9.5
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": true,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": true
+      }
+    },
+    {
+      "id": "624mouse/624mouse4/DSC_7755.JPG",
+      "root": "624mouse",
+      "folder": "624mouse4",
+      "image": "DSC_7755.JPG",
+      "row_index": 3,
+      "existing": {
+        "bottom_cm": 7.3,
+        "right_cm": 11.42
+      },
+      "new": {
+        "bottom_cm": 7.75,
+        "right_cm": 11.34
+      },
+      "pre_review_centre_difference_mm": 4.570557952810577,
+      "third": {
+        "bottom_cm": 7.3,
+        "right_cm": 11.4
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T09:50:28.255547+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T09:50:48.805112+00:00",
+      "final_coordinate": {
+        "bottom_cm": 7.3,
+        "right_cm": 11.42
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "624mouse/624mouse5/DSC_7765.JPG",
+      "root": "624mouse",
+      "folder": "624mouse5",
+      "image": "DSC_7765.JPG",
+      "row_index": 2,
+      "existing": {
+        "bottom_cm": 8.3,
+        "right_cm": 8.56
+      },
+      "new": {
+        "bottom_cm": 8.69,
+        "right_cm": 10.6
+      },
+      "pre_review_centre_difference_mm": 20.76944871680516,
+      "third": {
+        "bottom_cm": 8.3,
+        "right_cm": 10.55
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T09:52:30.190894+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T09:54:45.130444+00:00",
+      "final_coordinate": {
+        "bottom_cm": 8.3,
+        "right_cm": 8.56
+      },
+      "status": "retain_existing_after_downstream_validation",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false,
+        "note": "corrected window matched the 90-degree radiograph less well, or no better, than the released window; released coordinates retained"
+      }
+    },
+    {
+      "id": "624mouse/624mouse9/DSC_7803.JPG",
+      "root": "624mouse",
+      "folder": "624mouse9",
+      "image": "DSC_7803.JPG",
+      "row_index": 3,
+      "existing": {
+        "bottom_cm": 5.3,
+        "right_cm": 11.9
+      },
+      "new": {
+        "bottom_cm": 5.4,
+        "right_cm": 10.9
+      },
+      "pre_review_centre_difference_mm": 10.04987562112089,
+      "third": {
+        "bottom_cm": 5.3,
+        "right_cm": 10.9
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T11:18:47.692222+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T11:19:20.350450+00:00",
+      "final_coordinate": {
+        "bottom_cm": 5.3,
+        "right_cm": 11.9
+      },
+      "status": "retain_existing_after_downstream_validation",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false,
+        "note": "corrected window matched the 90-degree radiograph less well, or no better, than the released window; released coordinates retained"
+      }
+    },
+    {
+      "id": "625rabbit/rabbit2/3/DSC_7870.JPG",
+      "root": "625rabbit",
+      "folder": "rabbit2/3",
+      "image": "DSC_7870.JPG",
+      "row_index": 3,
+      "existing": {
+        "bottom_cm": 5.3,
+        "right_cm": 10.68
+      },
+      "new": {
+        "bottom_cm": 5.84,
+        "right_cm": 10.73
+      },
+      "pre_review_centre_difference_mm": 5.4230987451825,
+      "third": {
+        "bottom_cm": 5.3,
+        "right_cm": 10.65
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T11:20:14.040638+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T11:20:26.832300+00:00",
+      "final_coordinate": {
+        "bottom_cm": 5.3,
+        "right_cm": 10.68
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "625rabbit/rabbit2/4/DSC_7876.JPG",
+      "root": "625rabbit",
+      "folder": "rabbit2/4",
+      "image": "DSC_7876.JPG",
+      "row_index": 1,
+      "existing": {
+        "bottom_cm": 10.3,
+        "right_cm": 12.5
+      },
+      "new": {
+        "bottom_cm": 10.6,
+        "right_cm": 12.57
+      },
+      "pre_review_centre_difference_mm": 3.080584360149863,
+      "third": {
+        "bottom_cm": 10.3,
+        "right_cm": 12.5
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T11:21:08.861638+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T11:21:50.469892+00:00",
+      "final_coordinate": {
+        "bottom_cm": 10.3,
+        "right_cm": 12.5
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "625rabbit/rabbit2/5/DSC_7888.JPG",
+      "root": "625rabbit",
+      "folder": "rabbit2/5",
+      "image": "DSC_7888.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 12.3,
+        "right_cm": 9.2
+      },
+      "new": {
+        "bottom_cm": 12.0,
+        "right_cm": 10.1
+      },
+      "pre_review_centre_difference_mm": 9.486832980505143,
+      "third": {
+        "bottom_cm": 12.1,
+        "right_cm": 10.2
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T11:22:41.860440+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T11:22:52.892949+00:00",
+      "final_coordinate": {
+        "bottom_cm": 12.0,
+        "right_cm": 10.1
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": true,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": true
+      }
+    },
+    {
+      "id": "625rabbit/rabbit2/6/DSC_7893.JPG",
+      "root": "625rabbit",
+      "folder": "rabbit2/6",
+      "image": "DSC_7893.JPG",
+      "row_index": 4,
+      "existing": {
+        "bottom_cm": 3.8,
+        "right_cm": 9.2
+      },
+      "new": {
+        "bottom_cm": 4.23,
+        "right_cm": 9.1
+      },
+      "pre_review_centre_difference_mm": 4.414748010928828,
+      "third": {
+        "bottom_cm": 3.8,
+        "right_cm": 9.3
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T11:23:34.231179+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T11:23:48.018651+00:00",
+      "final_coordinate": {
+        "bottom_cm": 3.8,
+        "right_cm": 9.2
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "626rabbit/rabbit1/3/DSC_7917.JPG",
+      "root": "626rabbit",
+      "folder": "rabbit1/3",
+      "image": "DSC_7917.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 13.3,
+        "right_cm": 11.0
+      },
+      "new": {
+        "bottom_cm": 12.83,
+        "right_cm": 11.05
+      },
+      "pre_review_centre_difference_mm": 4.726520919238596,
+      "third": {
+        "bottom_cm": 13.3,
+        "right_cm": 10.9
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T11:24:23.071543+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T11:24:40.781907+00:00",
+      "final_coordinate": {
+        "bottom_cm": 13.3,
+        "right_cm": 11.0
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "626rabbit/rabbit2/10/DSC_7952.JPG",
+      "root": "626rabbit",
+      "folder": "rabbit2/10",
+      "image": "DSC_7952.JPG",
+      "row_index": 0,
+      "existing": {
+        "bottom_cm": 10.25,
+        "right_cm": 7.52
+      },
+      "new": {
+        "bottom_cm": 10.15,
+        "right_cm": 7.3
+      },
+      "pre_review_centre_difference_mm": 2.4166091947189106,
+      "third": {
+        "bottom_cm": 10.3,
+        "right_cm": 7.45
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T11:25:17.057719+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T11:25:30.591430+00:00",
+      "final_coordinate": {
+        "bottom_cm": 10.25,
+        "right_cm": 7.52
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "626rabbit/rabbit2/8/DSC_7945.JPG",
+      "root": "626rabbit",
+      "folder": "rabbit2/8",
+      "image": "DSC_7945.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 3.3,
+        "right_cm": 8.32
+      },
+      "new": {
+        "bottom_cm": 3.3,
+        "right_cm": 10.3
+      },
+      "pre_review_centre_difference_mm": 19.800000000000004,
+      "third": {
+        "bottom_cm": 3.3,
+        "right_cm": 10.3
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T11:25:57.611782+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T11:26:10.784636+00:00",
+      "final_coordinate": {
+        "bottom_cm": 3.3,
+        "right_cm": 10.3
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": true,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": true
+      }
+    },
+    {
+      "id": "809rabbit/rabbit1-1/P1081343.JPG",
+      "root": "809rabbit",
+      "folder": "rabbit1-1",
+      "image": "P1081343.JPG",
+      "row_index": 7,
+      "existing": {
+        "bottom_cm": 11.8,
+        "right_cm": 9.5
+      },
+      "new": {
+        "bottom_cm": 11.7,
+        "right_cm": 12.6
+      },
+      "pre_review_centre_difference_mm": 31.016124838541643,
+      "third": {
+        "bottom_cm": 11.8,
+        "right_cm": 7.43
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T11:26:43.027686+00:00",
+      "decision": "coordinate_uncertain",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T11:27:58.985651+00:00",
+      "final_coordinate": null,
+      "status": "coordinate_uncertain",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "810rabbit/810rabbit1/P1081375.JPG",
+      "root": "810rabbit",
+      "folder": "810rabbit1",
+      "image": "P1081375.JPG",
+      "row_index": 4,
+      "existing": {
+        "bottom_cm": 5.8,
+        "right_cm": 10.6
+      },
+      "new": {
+        "bottom_cm": 5.29,
+        "right_cm": 10.6
+      },
+      "pre_review_centre_difference_mm": 5.099999999999998,
+      "third": {
+        "bottom_cm": 5.3,
+        "right_cm": 10.6
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T11:28:24.815069+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T11:28:56.931536+00:00",
+      "final_coordinate": {
+        "bottom_cm": 5.29,
+        "right_cm": 10.6
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": true,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": true
+      }
+    },
+    {
+      "id": "811rabbit/811rabbit2-4/P1081460.JPG",
+      "root": "811rabbit",
+      "folder": "811rabbit2-4",
+      "image": "P1081460.JPG",
+      "row_index": 0,
+      "existing": {
+        "bottom_cm": 10.3,
+        "right_cm": 10.15
+      },
+      "new": {
+        "bottom_cm": 10.34,
+        "right_cm": 14.21
+      },
+      "pre_review_centre_difference_mm": 40.601970395536235,
+      "third": {
+        "bottom_cm": 10.3,
+        "right_cm": 14.15
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:17:42.735433+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:18:23.432893+00:00",
+      "final_coordinate": {
+        "bottom_cm": 10.34,
+        "right_cm": 14.21
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "815rabbit/rabbit2-1/P1091663.JPG",
+      "root": "815rabbit",
+      "folder": "rabbit2-1",
+      "image": "P1091663.JPG",
+      "row_index": 3,
+      "existing": {
+        "bottom_cm": 7.3,
+        "right_cm": 8.33
+      },
+      "new": {
+        "bottom_cm": 7.3,
+        "right_cm": 10.31
+      },
+      "pre_review_centre_difference_mm": 19.800000000000004,
+      "third": {
+        "bottom_cm": 7.3,
+        "right_cm": 10.35
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:19:04.771963+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:19:13.600111+00:00",
+      "final_coordinate": {
+        "bottom_cm": 7.3,
+        "right_cm": 10.31
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": true,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": true
+      }
+    },
+    {
+      "id": "815rabbit/rabbit2-1/P1091665.JPG",
+      "root": "815rabbit",
+      "folder": "rabbit2-1",
+      "image": "P1091665.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 4.8,
+        "right_cm": 13.4
+      },
+      "new": {
+        "bottom_cm": 4.81,
+        "right_cm": 11.39
+      },
+      "pre_review_centre_difference_mm": 20.100248754679626,
+      "third": {
+        "bottom_cm": 4.8,
+        "right_cm": 11.4
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:19:46.571697+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:20:03.693911+00:00",
+      "final_coordinate": {
+        "bottom_cm": 4.81,
+        "right_cm": 11.39
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": true,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": true
+      }
+    },
+    {
+      "id": "816rabbit/rabbit1-2/P1101707.JPG",
+      "root": "816rabbit",
+      "folder": "rabbit1-2",
+      "image": "P1101707.JPG",
+      "row_index": 6,
+      "existing": {
+        "bottom_cm": 13.3,
+        "right_cm": 8.72
+      },
+      "new": {
+        "bottom_cm": 12.75,
+        "right_cm": 8.61
+      },
+      "pre_review_centre_difference_mm": 5.608921464952072,
+      "third": {
+        "bottom_cm": 12.8,
+        "right_cm": 8.8
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:24:48.089032+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:25:14.382005+00:00",
+      "final_coordinate": {
+        "bottom_cm": 12.75,
+        "right_cm": 8.61
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": true,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": true
+      }
+    },
+    {
+      "id": "816rabbit/rabbit3-4/P1121785.JPG",
+      "root": "816rabbit",
+      "folder": "rabbit3-4",
+      "image": "P1121785.JPG",
+      "row_index": 7,
+      "existing": {
+        "bottom_cm": 13.3,
+        "right_cm": 9.45
+      },
+      "new": {
+        "bottom_cm": 14.38,
+        "right_cm": 9.59
+      },
+      "pre_review_centre_difference_mm": 10.890362712049587,
+      "third": {
+        "bottom_cm": 13.3,
+        "right_cm": 9.45
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:25:36.488407+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:25:47.712629+00:00",
+      "final_coordinate": {
+        "bottom_cm": 13.3,
+        "right_cm": 9.45
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "817rabbit/rabbit1-2/P1131803.JPG",
+      "root": "817rabbit",
+      "folder": "rabbit1-2",
+      "image": "P1131803.JPG",
+      "row_index": 7,
+      "existing": {
+        "bottom_cm": 12.8,
+        "right_cm": 8.3
+      },
+      "new": {
+        "bottom_cm": 12.81,
+        "right_cm": 9.35
+      },
+      "pre_review_centre_difference_mm": 10.5004761796787,
+      "third": {
+        "bottom_cm": 12.8,
+        "right_cm": 8.35
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:26:05.917208+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:26:14.316341+00:00",
+      "final_coordinate": {
+        "bottom_cm": 12.8,
+        "right_cm": 8.3
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "817rabbit/rabbit2-3/P1131842.JPG",
+      "root": "817rabbit",
+      "folder": "rabbit2-3",
+      "image": "P1131842.JPG",
+      "row_index": 6,
+      "existing": {
+        "bottom_cm": 14.3,
+        "right_cm": 9.9
+      },
+      "new": {
+        "bottom_cm": 14.32,
+        "right_cm": 10.2
+      },
+      "pre_review_centre_difference_mm": 3.0066592756745707,
+      "third": {
+        "bottom_cm": 14.3,
+        "right_cm": 9.74
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:26:37.851366+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:27:04.822409+00:00",
+      "final_coordinate": {
+        "bottom_cm": 14.3,
+        "right_cm": 9.9
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "820rabbit/rabbit1-1/P1131912.JPG",
+      "root": "820rabbit",
+      "folder": "rabbit1-1",
+      "image": "P1131912.JPG",
+      "row_index": 3,
+      "existing": {
+        "bottom_cm": 7.3,
+        "right_cm": 8.82
+      },
+      "new": {
+        "bottom_cm": 7.87,
+        "right_cm": 8.8
+      },
+      "pre_review_centre_difference_mm": 5.703507692639682,
+      "third": {
+        "bottom_cm": 7.3,
+        "right_cm": 8.82
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:27:49.187428+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:27:55.124452+00:00",
+      "final_coordinate": {
+        "bottom_cm": 7.3,
+        "right_cm": 8.82
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "820rabbit/rabbit1-4/P1131927.JPG",
+      "root": "820rabbit",
+      "folder": "rabbit1-4",
+      "image": "P1131927.JPG",
+      "row_index": 3,
+      "existing": {
+        "bottom_cm": 6.8,
+        "right_cm": 11.05
+      },
+      "new": {
+        "bottom_cm": 6.77,
+        "right_cm": 10.05
+      },
+      "pre_review_centre_difference_mm": 10.00449898795537,
+      "third": {
+        "bottom_cm": 6.8,
+        "right_cm": 11.05
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:28:26.860777+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:28:34.719215+00:00",
+      "final_coordinate": {
+        "bottom_cm": 6.8,
+        "right_cm": 11.05
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "821rabbit/rabbit1-4/P1131971.JPG",
+      "root": "821rabbit",
+      "folder": "rabbit1-4",
+      "image": "P1131971.JPG",
+      "row_index": 2,
+      "existing": {
+        "bottom_cm": 6.3,
+        "right_cm": 8.8
+      },
+      "new": {
+        "bottom_cm": 6.81,
+        "right_cm": 8.69
+      },
+      "pre_review_centre_difference_mm": 5.2172789842982334,
+      "third": {
+        "bottom_cm": 6.3,
+        "right_cm": 8.8
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:29:08.523629+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:29:19.192045+00:00",
+      "final_coordinate": {
+        "bottom_cm": 6.3,
+        "right_cm": 8.8
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "821rabbit/rabbit2-1/P1131980.JPG",
+      "root": "821rabbit",
+      "folder": "rabbit2-1",
+      "image": "P1131980.JPG",
+      "row_index": 1,
+      "existing": {
+        "bottom_cm": 7.8,
+        "right_cm": 10.0
+      },
+      "new": {
+        "bottom_cm": 8.35,
+        "right_cm": 10.0
+      },
+      "pre_review_centre_difference_mm": 5.499999999999998,
+      "third": {
+        "bottom_cm": 7.8,
+        "right_cm": 10.0
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:29:42.419615+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:29:52.822942+00:00",
+      "final_coordinate": {
+        "bottom_cm": 7.8,
+        "right_cm": 10.0
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "821rabbit/rabbit2-1/P1131981.JPG",
+      "root": "821rabbit",
+      "folder": "rabbit2-1",
+      "image": "P1131981.JPG",
+      "row_index": 2,
+      "existing": {
+        "bottom_cm": 7.3,
+        "right_cm": 9.45
+      },
+      "new": {
+        "bottom_cm": 7.65,
+        "right_cm": 9.4
+      },
+      "pre_review_centre_difference_mm": 3.5355339059327417,
+      "third": {
+        "bottom_cm": 7.3,
+        "right_cm": 9.45
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:30:35.964304+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:30:41.768049+00:00",
+      "final_coordinate": {
+        "bottom_cm": 7.3,
+        "right_cm": 9.45
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "821rabbit/rabbit2-1/P1131982.JPG",
+      "root": "821rabbit",
+      "folder": "rabbit2-1",
+      "image": "P1131982.JPG",
+      "row_index": 3,
+      "existing": {
+        "bottom_cm": 7.3,
+        "right_cm": 10.52
+      },
+      "new": {
+        "bottom_cm": 7.74,
+        "right_cm": 10.54
+      },
+      "pre_review_centre_difference_mm": 4.404543109109052,
+      "third": {
+        "bottom_cm": 7.3,
+        "right_cm": 10.52
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:31:24.743386+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:31:30.671183+00:00",
+      "final_coordinate": {
+        "bottom_cm": 7.3,
+        "right_cm": 10.52
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "821rabbit/rabbit2-2/P1131983.JPG",
+      "root": "821rabbit",
+      "folder": "rabbit2-2",
+      "image": "P1131983.JPG",
+      "row_index": 0,
+      "existing": {
+        "bottom_cm": 9.3,
+        "right_cm": 10.5
+      },
+      "new": {
+        "bottom_cm": 9.6,
+        "right_cm": 10.45
+      },
+      "pre_review_centre_difference_mm": 3.041381265149101,
+      "third": {
+        "bottom_cm": 9.3,
+        "right_cm": 10.5
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:31:47.909143+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:31:59.022589+00:00",
+      "final_coordinate": {
+        "bottom_cm": 9.3,
+        "right_cm": 10.5
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "822rabbit/rabbit1-5/P1132021.JPG",
+      "root": "822rabbit",
+      "folder": "rabbit1-5",
+      "image": "P1132021.JPG",
+      "row_index": 1,
+      "existing": {
+        "bottom_cm": 8.3,
+        "right_cm": 10.2
+      },
+      "new": {
+        "bottom_cm": 8.63,
+        "right_cm": 10.23
+      },
+      "pre_review_centre_difference_mm": 3.31360830515618,
+      "third": {
+        "bottom_cm": 8.3,
+        "right_cm": 10.22
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:32:17.798990+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:32:21.480147+00:00",
+      "final_coordinate": {
+        "bottom_cm": 8.3,
+        "right_cm": 10.2
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "822rabbit/rabbit2-2/P1132029.JPG",
+      "root": "822rabbit",
+      "folder": "rabbit2-2",
+      "image": "P1132029.JPG",
+      "row_index": 0,
+      "existing": {
+        "bottom_cm": 10.3,
+        "right_cm": 9.93
+      },
+      "new": {
+        "bottom_cm": 10.53,
+        "right_cm": 9.94
+      },
+      "pre_review_centre_difference_mm": 2.302172886644254,
+      "third": {
+        "bottom_cm": 10.3,
+        "right_cm": 9.95
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:32:40.825863+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:32:49.753180+00:00",
+      "final_coordinate": {
+        "bottom_cm": 10.3,
+        "right_cm": 9.93
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "824rabbit/rabbit1-2/P1132110.JPG",
+      "root": "824rabbit",
+      "folder": "rabbit1-2",
+      "image": "P1132110.JPG",
+      "row_index": 1,
+      "existing": {
+        "bottom_cm": 9.3,
+        "right_cm": 10.08
+      },
+      "new": {
+        "bottom_cm": 9.61,
+        "right_cm": 10.07
+      },
+      "pre_review_centre_difference_mm": 3.1016124838541517,
+      "third": {
+        "bottom_cm": 9.3,
+        "right_cm": 10.1
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:33:22.617532+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:33:33.168753+00:00",
+      "final_coordinate": {
+        "bottom_cm": 9.3,
+        "right_cm": 10.08
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "824rabbit/rabbit1-2/P1132116.JPG",
+      "root": "824rabbit",
+      "folder": "rabbit1-2",
+      "image": "P1132116.JPG",
+      "row_index": 7,
+      "existing": {
+        "bottom_cm": 13.3,
+        "right_cm": 10.52
+      },
+      "new": {
+        "bottom_cm": 12.31,
+        "right_cm": 10.52
+      },
+      "pre_review_centre_difference_mm": 9.900000000000002,
+      "third": {
+        "bottom_cm": 12.3,
+        "right_cm": 10.55
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:33:57.178970+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:34:08.349593+00:00",
+      "final_coordinate": {
+        "bottom_cm": 12.31,
+        "right_cm": 10.52
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": true,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": true
+      }
+    },
+    {
+      "id": "824rabbit/rabbit1-3/P1132123.JPG",
+      "root": "824rabbit",
+      "folder": "rabbit1-3",
+      "image": "P1132123.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 15.3,
+        "right_cm": 11.2
+      },
+      "new": {
+        "bottom_cm": 15.76,
+        "right_cm": 11.25
+      },
+      "pre_review_centre_difference_mm": 4.627094120503702,
+      "third": {
+        "bottom_cm": 15.8,
+        "right_cm": 11.2
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:34:37.353540+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:34:49.118492+00:00",
+      "final_coordinate": {
+        "bottom_cm": 15.76,
+        "right_cm": 11.25
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": true,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": true
+      }
+    },
+    {
+      "id": "824rabbit/rabbit1-4/P1132131.JPG",
+      "root": "824rabbit",
+      "folder": "rabbit1-4",
+      "image": "P1132131.JPG",
+      "row_index": 7,
+      "existing": {
+        "bottom_cm": 14.3,
+        "right_cm": 9.65
+      },
+      "new": {
+        "bottom_cm": 14.29,
+        "right_cm": 9.24
+      },
+      "pre_review_centre_difference_mm": 4.101219330881977,
+      "third": {
+        "bottom_cm": 14.3,
+        "right_cm": 9.65
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:35:18.871551+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:35:25.861578+00:00",
+      "final_coordinate": {
+        "bottom_cm": 14.3,
+        "right_cm": 9.65
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "824rabbit/rabbit2-2/P1132143.JPG",
+      "root": "824rabbit",
+      "folder": "rabbit2-2",
+      "image": "P1132143.JPG",
+      "row_index": 4,
+      "existing": {
+        "bottom_cm": 5.8,
+        "right_cm": 9.99
+      },
+      "new": {
+        "bottom_cm": 6.06,
+        "right_cm": 9.8
+      },
+      "pre_review_centre_difference_mm": 3.2202484376209193,
+      "third": {
+        "bottom_cm": 5.8,
+        "right_cm": 10.0
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:35:56.368542+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:36:02.070999+00:00",
+      "final_coordinate": {
+        "bottom_cm": 5.8,
+        "right_cm": 9.99
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "824rabbit/rabbit3-4/P1132191.JPG",
+      "root": "824rabbit",
+      "folder": "rabbit3-4",
+      "image": "P1132191.JPG",
+      "row_index": 7,
+      "existing": {
+        "bottom_cm": 13.8,
+        "right_cm": 10.2
+      },
+      "new": {
+        "bottom_cm": 13.81,
+        "right_cm": 9.7
+      },
+      "pre_review_centre_difference_mm": 5.000999900019995,
+      "third": {
+        "bottom_cm": 13.8,
+        "right_cm": 10.23
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:36:18.307709+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:36:23.321079+00:00",
+      "final_coordinate": {
+        "bottom_cm": 13.8,
+        "right_cm": 10.2
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "825rabbit/rabbit2-1/P1132225.JPG",
+      "root": "825rabbit",
+      "folder": "rabbit2-1",
+      "image": "P1132225.JPG",
+      "row_index": 3,
+      "existing": {
+        "bottom_cm": 6.8,
+        "right_cm": 10.4
+      },
+      "new": {
+        "bottom_cm": 7.03,
+        "right_cm": 10.4
+      },
+      "pre_review_centre_difference_mm": 2.3000000000000043,
+      "third": {
+        "bottom_cm": 6.8,
+        "right_cm": 10.4
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:36:44.584781+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:36:53.010694+00:00",
+      "final_coordinate": {
+        "bottom_cm": 6.8,
+        "right_cm": 10.4
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "827rabbit/rabbit3-4/P1132504.JPG",
+      "root": "827rabbit",
+      "folder": "rabbit3-4",
+      "image": "P1132504.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 16.5,
+        "right_cm": 9.0
+      },
+      "new": {
+        "bottom_cm": 16.27,
+        "right_cm": 9.09
+      },
+      "pre_review_centre_difference_mm": 2.4698178070456973,
+      "third": {
+        "bottom_cm": 3.5,
+        "right_cm": 8.95
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:37:24.407682+00:00",
+      "decision": "coordinate_uncertain",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:40:15.185954+00:00",
+      "final_coordinate": null,
+      "status": "coordinate_uncertain",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "827rabbit/rabbit4-1/P1132506.JPG",
+      "root": "827rabbit",
+      "folder": "rabbit4-1",
+      "image": "P1132506.JPG",
+      "row_index": 1,
+      "existing": {
+        "bottom_cm": 8.3,
+        "right_cm": 10.4
+      },
+      "new": {
+        "bottom_cm": 8.66,
+        "right_cm": 10.39
+      },
+      "pre_review_centre_difference_mm": 3.601388621073816,
+      "third": {
+        "bottom_cm": 8.3,
+        "right_cm": 10.4
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:41:34.224938+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:41:39.514149+00:00",
+      "final_coordinate": {
+        "bottom_cm": 8.3,
+        "right_cm": 10.4
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "827rabbit/rabbit4-4/P1132522.JPG",
+      "root": "827rabbit",
+      "folder": "rabbit4-4",
+      "image": "P1132522.JPG",
+      "row_index": 2,
+      "existing": {
+        "bottom_cm": 7.3,
+        "right_cm": 9.1
+      },
+      "new": {
+        "bottom_cm": 7.52,
+        "right_cm": 9.13
+      },
+      "pre_review_centre_difference_mm": 2.220360331117451,
+      "third": {
+        "bottom_cm": 7.3,
+        "right_cm": 9.1
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:41:57.460026+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:42:02.015653+00:00",
+      "final_coordinate": {
+        "bottom_cm": 7.3,
+        "right_cm": 9.1
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "907rabbit/rabbit1-2/P1133159.JPG",
+      "root": "907rabbit",
+      "folder": "rabbit1-2",
+      "image": "P1133159.JPG",
+      "row_index": 4,
+      "existing": {
+        "bottom_cm": 4.8,
+        "right_cm": 11.56
+      },
+      "new": {
+        "bottom_cm": 5.12,
+        "right_cm": 11.52
+      },
+      "pre_review_centre_difference_mm": 3.224903099319424,
+      "third": {
+        "bottom_cm": 4.8,
+        "right_cm": 11.56
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:42:39.908946+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:42:47.047441+00:00",
+      "final_coordinate": {
+        "bottom_cm": 4.8,
+        "right_cm": 11.56
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "907rabbit/rabbit1-3/P1133167.JPG",
+      "root": "907rabbit",
+      "folder": "rabbit1-3",
+      "image": "P1133167.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 13.8,
+        "right_cm": 9.72
+      },
+      "new": {
+        "bottom_cm": 13.79,
+        "right_cm": 10.15
+      },
+      "pre_review_centre_difference_mm": 4.301162633521311,
+      "third": {
+        "bottom_cm": 13.8,
+        "right_cm": 9.7
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:43:23.653266+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:43:30.043375+00:00",
+      "final_coordinate": {
+        "bottom_cm": 13.8,
+        "right_cm": 9.72
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "908rabbit/rabbit3-1/P1133495.JPG",
+      "root": "908rabbit",
+      "folder": "rabbit3-1",
+      "image": "P1133495.JPG",
+      "row_index": 8,
+      "existing": {
+        "bottom_cm": 12.8,
+        "right_cm": 9.7
+      },
+      "new": {
+        "bottom_cm": 12.78,
+        "right_cm": 10.17
+      },
+      "pre_review_centre_difference_mm": 4.7042533945356375,
+      "third": {
+        "bottom_cm": 12.8,
+        "right_cm": 9.65
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:43:58.003948+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:44:04.454772+00:00",
+      "final_coordinate": {
+        "bottom_cm": 12.8,
+        "right_cm": 9.7
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "908rabbit/rabbit4-4/P1133538.JPG",
+      "root": "908rabbit",
+      "folder": "rabbit4-4",
+      "image": "P1133538.JPG",
+      "row_index": 3,
+      "existing": {
+        "bottom_cm": 6.8,
+        "right_cm": 10.45
+      },
+      "new": {
+        "bottom_cm": 7.08,
+        "right_cm": 10.45
+      },
+      "pre_review_centre_difference_mm": 2.8000000000000025,
+      "third": {
+        "bottom_cm": 6.8,
+        "right_cm": 10.45
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:44:33.072193+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:44:36.536894+00:00",
+      "final_coordinate": {
+        "bottom_cm": 6.8,
+        "right_cm": 10.45
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "909rabbit/rabbit1-1/P1133548.JPG",
+      "root": "909rabbit",
+      "folder": "rabbit1-1",
+      "image": "P1133548.JPG",
+      "row_index": 8,
+      "existing": {
+        "bottom_cm": 12.8,
+        "right_cm": 10.2
+      },
+      "new": {
+        "bottom_cm": 12.8,
+        "right_cm": 9.76
+      },
+      "pre_review_centre_difference_mm": 4.399999999999995,
+      "third": {
+        "bottom_cm": 12.8,
+        "right_cm": 10.17
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:45:06.642743+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:45:11.460632+00:00",
+      "final_coordinate": {
+        "bottom_cm": 12.8,
+        "right_cm": 10.2
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "909rabbit/rabbit1-4/P1133572.JPG",
+      "root": "909rabbit",
+      "folder": "rabbit1-4",
+      "image": "P1133572.JPG",
+      "row_index": 6,
+      "existing": {
+        "bottom_cm": 14.3,
+        "right_cm": 9.75
+      },
+      "new": {
+        "bottom_cm": 14.25,
+        "right_cm": 10.16
+      },
+      "pre_review_centre_difference_mm": 4.130375285612678,
+      "third": {
+        "bottom_cm": 14.3,
+        "right_cm": 9.8
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:45:28.923192+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:45:38.163924+00:00",
+      "final_coordinate": {
+        "bottom_cm": 14.3,
+        "right_cm": 9.75
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "909rabbit/rabbit2-1/P1133578.JPG",
+      "root": "909rabbit",
+      "folder": "rabbit2-1",
+      "image": "P1133578.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 13.8,
+        "right_cm": 7.45
+      },
+      "new": {
+        "bottom_cm": 13.78,
+        "right_cm": 6.64
+      },
+      "pre_review_centre_difference_mm": 8.102468759581864,
+      "third": {
+        "bottom_cm": 13.8,
+        "right_cm": 7.5
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:46:00.479449+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:46:06.042930+00:00",
+      "final_coordinate": {
+        "bottom_cm": 13.8,
+        "right_cm": 7.45
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "909rabbit/rabbit2-2/P1133586.JPG",
+      "root": "909rabbit",
+      "folder": "rabbit2-2",
+      "image": "P1133586.JPG",
+      "row_index": 6,
+      "existing": {
+        "bottom_cm": 14.8,
+        "right_cm": 9.8
+      },
+      "new": {
+        "bottom_cm": 14.75,
+        "right_cm": 10.1
+      },
+      "pre_review_centre_difference_mm": 3.041381265149101,
+      "third": {
+        "bottom_cm": 14.8,
+        "right_cm": 9.8
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:46:58.126013+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:47:02.285479+00:00",
+      "final_coordinate": {
+        "bottom_cm": 14.8,
+        "right_cm": 9.8
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "910rabbit/rabbit1-1/P1133628.JPG",
+      "root": "910rabbit",
+      "folder": "rabbit1-1",
+      "image": "P1133628.JPG",
+      "row_index": 6,
+      "existing": {
+        "bottom_cm": 13.8,
+        "right_cm": 9.75
+      },
+      "new": {
+        "bottom_cm": 13.77,
+        "right_cm": 10.18
+      },
+      "pre_review_centre_difference_mm": 4.310452412450459,
+      "third": {
+        "bottom_cm": 13.8,
+        "right_cm": 9.8
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:47:24.335351+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:47:30.060459+00:00",
+      "final_coordinate": {
+        "bottom_cm": 13.8,
+        "right_cm": 9.75
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "910rabbit/rabbit2-2/P1133667.JPG",
+      "root": "910rabbit",
+      "folder": "rabbit2-2",
+      "image": "P1133667.JPG",
+      "row_index": 6,
+      "existing": {
+        "bottom_cm": 15.8,
+        "right_cm": 9.93
+      },
+      "new": {
+        "bottom_cm": 15.51,
+        "right_cm": 9.99
+      },
+      "pre_review_centre_difference_mm": 2.961418578992179,
+      "third": {
+        "bottom_cm": 15.8,
+        "right_cm": 9.92
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:57:39.488495+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:57:43.901055+00:00",
+      "final_coordinate": {
+        "bottom_cm": 15.8,
+        "right_cm": 9.93
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "911rabbit/rabbit1-3/P1133767.JPG",
+      "root": "911rabbit",
+      "folder": "rabbit1-3",
+      "image": "P1133767.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 14.8,
+        "right_cm": 9.35
+      },
+      "new": {
+        "bottom_cm": 14.76,
+        "right_cm": 8.46
+      },
+      "pre_review_centre_difference_mm": 8.908984229416943,
+      "third": {
+        "bottom_cm": 14.8,
+        "right_cm": 7.4
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:58:24.727588+00:00",
+      "decision": "coordinate_uncertain",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:58:35.522648+00:00",
+      "final_coordinate": null,
+      "status": "coordinate_uncertain",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "911rabbit/rabbit1-4/P1133777.JPG",
+      "root": "911rabbit",
+      "folder": "rabbit1-4",
+      "image": "P1133777.JPG",
+      "row_index": 7,
+      "existing": {
+        "bottom_cm": 12.8,
+        "right_cm": 9.88
+      },
+      "new": {
+        "bottom_cm": 12.8,
+        "right_cm": 8.01
+      },
+      "pre_review_centre_difference_mm": 18.70000000000001,
+      "third": {
+        "bottom_cm": 12.8,
+        "right_cm": 7.9
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:59:11.153519+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:59:23.018416+00:00",
+      "final_coordinate": {
+        "bottom_cm": 12.8,
+        "right_cm": 8.01
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": true,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": true
+      }
+    },
+    {
+      "id": "911rabbit/rabbit2-2/P1133792.JPG",
+      "root": "911rabbit",
+      "folder": "rabbit2-2",
+      "image": "P1133792.JPG",
+      "row_index": 6,
+      "existing": {
+        "bottom_cm": 12.8,
+        "right_cm": 10.2
+      },
+      "new": {
+        "bottom_cm": 12.79,
+        "right_cm": 9.74
+      },
+      "pre_review_centre_difference_mm": 4.601086828130928,
+      "third": {
+        "bottom_cm": 12.8,
+        "right_cm": 10.16
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T12:59:50.897508+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T12:59:59.452527+00:00",
+      "final_coordinate": {
+        "bottom_cm": 12.8,
+        "right_cm": 10.2
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "913rabbit/rabbit1-4/P1133852.JPG",
+      "root": "913rabbit",
+      "folder": "rabbit1-4",
+      "image": "P1133852.JPG",
+      "row_index": 2,
+      "existing": {
+        "bottom_cm": 7.8,
+        "right_cm": 9.02
+      },
+      "new": {
+        "bottom_cm": 8.0,
+        "right_cm": 8.86
+      },
+      "pre_review_centre_difference_mm": 2.561249694973142,
+      "third": {
+        "bottom_cm": 7.8,
+        "right_cm": 9.0
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T13:00:30.273257+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T13:00:34.442724+00:00",
+      "final_coordinate": {
+        "bottom_cm": 7.8,
+        "right_cm": 9.02
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "913rabbit/rabbit2-4/P1133886.JPG",
+      "root": "913rabbit",
+      "folder": "rabbit2-4",
+      "image": "P1133886.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 14.3,
+        "right_cm": 10.16
+      },
+      "new": {
+        "bottom_cm": 14.26,
+        "right_cm": 9.77
+      },
+      "pre_review_centre_difference_mm": 3.920459156782538,
+      "third": {
+        "bottom_cm": 14.3,
+        "right_cm": 10.15
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T13:01:15.415763+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T13:01:19.226431+00:00",
+      "final_coordinate": {
+        "bottom_cm": 14.3,
+        "right_cm": 10.16
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "913rabbit/rabbit3-1/P1133892.JPG",
+      "root": "913rabbit",
+      "folder": "rabbit3-1",
+      "image": "P1133892.JPG",
+      "row_index": 4,
+      "existing": {
+        "bottom_cm": 6.3,
+        "right_cm": 9.25
+      },
+      "new": {
+        "bottom_cm": 5.84,
+        "right_cm": 9.27
+      },
+      "pre_review_centre_difference_mm": 4.604345773288535,
+      "third": {
+        "bottom_cm": 5.8,
+        "right_cm": 9.2
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T13:01:41.706951+00:00",
+      "decision": "correct_to_new",
+      "decision_reason": "existing_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T13:01:50.831683+00:00",
+      "final_coordinate": {
+        "bottom_cm": 5.84,
+        "right_cm": 9.27
+      },
+      "status": "correct_to_new",
+      "downstream": {
+        "crop_regenerated": true,
+        "file_qc_passed": true,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": true
+      }
+    },
+    {
+      "id": "914rabbit/rabbit1-2/P1133920.JPG",
+      "root": "914rabbit",
+      "folder": "rabbit1-2",
+      "image": "P1133920.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 15.8,
+        "right_cm": 7.5
+      },
+      "new": {
+        "bottom_cm": 15.78,
+        "right_cm": 6.49
+      },
+      "pre_review_centre_difference_mm": 10.101980003939818,
+      "third": {
+        "bottom_cm": 15.8,
+        "right_cm": 7.5
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T13:02:44.922205+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T13:02:50.380700+00:00",
+      "final_coordinate": {
+        "bottom_cm": 15.8,
+        "right_cm": 7.5
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "914rabbit/rabbit1-4/P1133935.JPG",
+      "root": "914rabbit",
+      "folder": "rabbit1-4",
+      "image": "P1133935.JPG",
+      "row_index": 4,
+      "existing": {
+        "bottom_cm": 4.8,
+        "right_cm": 11.05
+      },
+      "new": {
+        "bottom_cm": 4.81,
+        "right_cm": 10.84
+      },
+      "pre_review_centre_difference_mm": 2.102379604162872,
+      "third": {
+        "bottom_cm": 4.8,
+        "right_cm": 11.04
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T13:03:10.276318+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T13:03:16.682706+00:00",
+      "final_coordinate": {
+        "bottom_cm": 4.8,
+        "right_cm": 11.05
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "915rabbit/rabbit1-1/P1133943.JPG",
+      "root": "915rabbit",
+      "folder": "rabbit1-1",
+      "image": "P1133943.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 13.3,
+        "right_cm": 10.4
+      },
+      "new": {
+        "bottom_cm": 12.33,
+        "right_cm": 10.4
+      },
+      "pre_review_centre_difference_mm": 9.700000000000006,
+      "third": {
+        "bottom_cm": 13.3,
+        "right_cm": 10.4
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T13:03:51.068357+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T13:03:57.205257+00:00",
+      "final_coordinate": {
+        "bottom_cm": 13.3,
+        "right_cm": 10.4
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "917rabbit/rabbit1-2/P1134139.JPG",
+      "root": "917rabbit",
+      "folder": "rabbit1-2",
+      "image": "P1134139.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 15.3,
+        "right_cm": 7.43
+      },
+      "new": {
+        "bottom_cm": 15.27,
+        "right_cm": 6.65
+      },
+      "pre_review_centre_difference_mm": 7.805767098754606,
+      "third": {
+        "bottom_cm": 15.3,
+        "right_cm": 7.43
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T13:04:25.102298+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T13:04:31.975860+00:00",
+      "final_coordinate": {
+        "bottom_cm": 15.3,
+        "right_cm": 7.43
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    },
+    {
+      "id": "917rabbit/rabbit2-2/P1134168.JPG",
+      "root": "917rabbit",
+      "folder": "rabbit2-2",
+      "image": "P1134168.JPG",
+      "row_index": 5,
+      "existing": {
+        "bottom_cm": 14.8,
+        "right_cm": 7.7
+      },
+      "new": {
+        "bottom_cm": 14.71,
+        "right_cm": 8.85
+      },
+      "pre_review_centre_difference_mm": 11.535163631262451,
+      "third": {
+        "bottom_cm": 14.8,
+        "right_cm": 7.7
+      },
+      "third_reader_id": "third_reader",
+      "third_read_at": "2026-09-21T13:05:06.747215+00:00",
+      "decision": "retain_existing",
+      "decision_reason": "new_reading_incorrect",
+      "decided_by": "review_adjudicator",
+      "decided_at": "2026-09-21T13:05:12.311799+00:00",
+      "final_coordinate": {
+        "bottom_cm": 14.8,
+        "right_cm": 7.7
+      },
+      "status": "retain_existing",
+      "downstream": {
+        "crop_regenerated": false,
+        "file_qc_passed": false,
+        "crop_reextraction_validated": false,
+        "automatic_retrieval_validated": false
+      }
+    }
+  ],
+  "last_working_sync_at": "2026-09-21T12:54:35.188165+00:00"
+}

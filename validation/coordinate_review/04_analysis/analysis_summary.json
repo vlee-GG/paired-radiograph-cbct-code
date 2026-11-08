@@ -1,0 +1,197 @@
+{
+  "_release_context": {
+    "scope": "historical_initial_adjudication_snapshot",
+    "initial_decisions": {
+      "retain_existing": 44,
+      "correct_to_new": 16,
+      "coordinate_uncertain": 3
+    },
+    "annotation_added_on": "2026-10-14",
+    "current_release": {
+      "release_version": "1.0.0",
+      "documentation_as_of": "2026-10-14",
+      "initial_proposed_corrections": 16,
+      "proposed_corrections_in_release": 15,
+      "applied_to_release": 13,
+      "reverted_to_existing": 2,
+      "not_in_release": 1,
+      "workflow_export_decisions": {
+        "correct_to_new": 14,
+        "retain_existing": 46,
+        "coordinate_uncertain": 3
+      },
+      "published_coordinate_authority": "source_cbct/**/*__coordinates.txt",
+      "published_crop_origins": "metadata/metadata.csv",
+      "current_release_summary": "validation/release_qc/qc_summary.json",
+      "release_validation_evidence": "validation/release_qc/release_validation.csv",
+      "crop_reextraction_evidence": "validation/release_qc/qc_summary.json#/checks/crop_origin_verification",
+      "interpretation": "Workflow downstream flags describe their recorded export, not the later full-release crop re-extraction. They have not been retroactively set to true."
+    },
+    "note": "Original analysis values, readings and workflow snapshot are preserved. Use the referenced release files for current coordinates and validation coverage.",
+    "snapshot_stage": "Initial adjudication analysis, before the two release-curation reversions; exact analysis export timestamp is not recorded."
+  },
+  "analysis_scope": {
+    "primary_analysis": "reconstructed frozen pre-review full paired dataset",
+    "paired_records": 2244,
+    "matched_directories": 335,
+    "trigger_threshold": "centre difference >2 mm",
+    "triggered_records": 63
+  },
+  "pre_review": {
+    "scope": {
+      "matched_records": 2244,
+      "matched_directories": 335
+    },
+    "centre_difference_mm": {
+      "n": 2244,
+      "mean": 0.8078866022951339,
+      "sd": 1.739580710277054,
+      "median": 0.5000000000000071,
+      "q1": 0.2236067977499901,
+      "q3": 0.9999999999999964,
+      "iqr": 0.7763932022500064
+    },
+    "mean_absolute_difference_mm": {
+      "x_right": 0.5437165775401073,
+      "y_bottom": 0.41319073083779256
+    },
+    "bland_altman": {
+      "x_right": {
+        "mean_difference_mm": 0.04888591800356503,
+        "sd_mm": 1.741006726100646,
+        "lower_95_loa_mm": -3.3634872651537013,
+        "upper_95_loa_mm": 3.4612591011608314
+      },
+      "y_bottom": {
+        "mean_difference_mm": 0.06595365418894511,
+        "sd_mm": 0.8007906422889496,
+        "lower_95_loa_mm": -1.503596004697396,
+        "upper_95_loa_mm": 1.6355033130752863
+      }
+    },
+    "icc_2_1": {
+      "x_right": 0.989553739492231,
+      "y_bottom": 0.9997050229242722
+    },
+    "bands": {
+      "≤1 mm": {
+        "count": 1710,
+        "proportion": 0.7620320855614974
+      },
+      ">1–2 mm": {
+        "count": 471,
+        "proportion": 0.20989304812834225
+      },
+      ">2 mm": {
+        "count": 63,
+        "proportion": 0.02807486631016043
+      },
+      ">2–5 mm": {
+        "count": 34,
+        "proportion": 0.015151515151515152
+      },
+      ">5 mm": {
+        "count": 29,
+        "proportion": 0.012923351158645277
+      }
+    }
+  },
+  "crop_origin_difference_voxel_distribution": {
+    "voxel_1": {
+      "n": 335,
+      "mean": 0.0,
+      "sd": 0.0,
+      "median": 0.0,
+      "q1": 0.0,
+      "q3": 0.0,
+      "iqr": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "nonzero_count": 0,
+      "frequencies": {
+        "0.0": 335
+      }
+    },
+    "voxel_2": {
+      "n": 335,
+      "mean": 0.0,
+      "sd": 0.0,
+      "median": 0.0,
+      "q1": 0.0,
+      "q3": 0.0,
+      "iqr": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "nonzero_count": 0,
+      "frequencies": {
+        "0.0": 335
+      }
+    },
+    "voxel_3": {
+      "n": 335,
+      "mean": 0.0,
+      "sd": 0.0,
+      "median": 0.0,
+      "q1": 0.0,
+      "q3": 0.0,
+      "iqr": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "nonzero_count": 0,
+      "frequencies": {
+        "0.0": 335
+      }
+    },
+    "voxel_4": {
+      "n": 335,
+      "mean": 0.0,
+      "sd": 0.0,
+      "median": 0.0,
+      "q1": 0.0,
+      "q3": 0.0,
+      "iqr": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "nonzero_count": 0,
+      "frequencies": {
+        "0.0": 335
+      }
+    }
+  },
+  "third_person_review": {
+    "formal_review_baseline_records": 63,
+    "formal_review_baseline_proportion_of_all_records": 0.02807486631016043,
+    "structured_third_review_records": 63,
+    "structured_review_proportion_of_all_records": 0.02807486631016043,
+    "trigger_reason": "centre difference >2 mm",
+    "decision_counts": {
+      "correct_to_new": 16,
+      "retain_existing": 44,
+      "coordinate_uncertain": 3
+    },
+    "reason_counts": {
+      "existing_reading_incorrect": 20,
+      "new_reading_incorrect": 43
+    },
+    "final_treatment": {
+      "retain_existing": "existing reading used",
+      "correct_to_new": "new reading used",
+      "coordinate_uncertain": "third-person reading used; uncertainty flag retained"
+    }
+  },
+  "final_target": {
+    "path": "01_coordinates/target_final",
+    "decision_counts": {
+      "correct_to_new": 16,
+      "retain_existing": 44,
+      "coordinate_uncertain": 3
+    },
+    "coordinate_uncertain_rule": "third-person reading used; uncertainty flag retained"
+  },
+  "internal_qc_note": "Post-review agreement against the new readings is not reported as a primary result because adjudication used those readings and would introduce incorporation bias.",
+  "limitations": [
+    "Crop-origin headers in the aligned new-reading files were copied from target; zero voxel differences are not independent agreement evidence.",
+    "For the 63 structured review records, both original readings are restored from the frozen review record because seven live new-reading files were edited after triggering; the other 2,181 paired records were unchanged.",
+    "Downstream crop regeneration and validation remain incomplete for corrected records as documented in generation_manifest.json."
+  ]
+}

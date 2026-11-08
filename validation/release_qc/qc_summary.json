@@ -1,0 +1,816 @@
+{
+  "release": "v1.0.0",
+  "generated": "2026-09-15T16:29:22",
+  "counts": {
+    "data_groups": 108,
+    "source_volumes": 335,
+    "paired_records": 2229,
+    "radiographs": 11145,
+    "coordinate_records": 335,
+    "files_total": 14044,
+    "rabbit_records": 2083,
+    "mouse_records": 146,
+    "limb_records": 1631,
+    "maxillary_records": 279,
+    "mandibular_records": 173,
+    "animal_verified_records": 1821,
+    "animal_not_linkable_records": 408,
+    "release_files_total": 14768,
+    "data_dictionary_fields": 237
+  },
+  "checks": {
+    "radiographs_per_record": "5 (all records)",
+    "record_files_per_sample": "6 (5 DICOM + 1 NIfTI, all records)",
+    "source_volume_uniqueness": "each source_volume_id stored exactly once under source_cbct/",
+    "leakage_constraint": "all sample_id sharing a source_volume_id belong to one data_group_id",
+    "radiograph_matrix": "834 x 688 pixels (all radiographs)",
+    "ImagerPixelSpacing": "0.035 mm (all radiographs)",
+    "PixelSpacing": "1 x 1 mm in 9,555 and 0.035 mm in 1,590 radiographs; retained but not used as an object-space scale",
+    "crop_target_matrix": "120 x 160 x 140 voxels at 0.25 mm",
+    "crop_boundary_clipped": "52 of 2,229 crops retained fewer in-plane voxels; narrowest 64",
+    "source_volume_matrix": "640 x 640 x 420 voxels at 0.25 mm",
+    "records_per_source_volume": "3-10 (mean 6.7, median 7)",
+    "manual_anatomical_review": "Two clinicians assessed 250 original pairs and 50 same-source substituted controls using the 90-degree view. First-submission label agreement: reader1 287/300 (95.7%), reader2 217/300 (72.3%); between-reader agreement 211/300 (70.3%). Subsequent unblinded author follow-up covered 91 cases: 89 between-reader disagreements and two shared deviations from the reference label. All 82 original pairs were judged approximately corresponding, and all nine controls non-corresponding. Author assessments agreed with reference labels in all 91 cases. See validation/anatomical_review/author_review_records.csv.",
+    "crop_origin": "provided for all 2,229 records; each verified by re-extraction from the released source volume",
+    "crop_origin_verification": "All 2,229 released crop arrays were compared with their recorded source-volume boxes within crop quantization tolerance; all boxes uniquely matched coordinate targets.",
+    "source_volume_repaired": "one source volume (sample rab_v184) had a missing slice restored before release. Its five crops were re-cut from the released 420-slice volume after that restoration, so they use the standard window (slices 160-300) and 0.25 mm isotropic spacing like every other crop.",
+    "sha256": "SHA256SUMS.txt lists all 14,767 current released files except itself (14,768 total).",
+    "exclusions": {
+      "coordinate_targets": 2244,
+      "not_released": 15,
+      "retained": 2229,
+      "source_volumes_with_unreleased_targets": 11,
+      "evidence": "validation/release_qc/release_validation.csv; validation/release_qc/exclusions.csv"
+    },
+    "automated_correspondence_check": "All 2,229 records freshly scored at five views against identical 20-candidate sets. Top1 [60,75,90,105,120] = [34.2,61.7,86.0,51.6,26.7]%; Top3 = [60.4,85.9,96.3,78.7,51.8]%. Current analysis: 2026-10-16; validation/multiview_retrieval/.",
+    "automated_correspondence_check_seeds": {
+      "distractor_seed": 20260920,
+      "bootstrap_seed": 20261016,
+      "n_distractors_per_record": 19,
+      "distractor_pool": "same subset, drawn from the whole release",
+      "search_parameters_fixed_on": "255-record development half of a 511-record sample; included in the full-release results. Parameters were applied unchanged and not re-fitted for the full-release run.",
+      "angle_extension_parameter_selection": "80 queries, 20 per anatomical subset, from 445 records in fold 0; selected among 13 configurations. Complete candidate pool retained."
+    },
+    "automated_correspondence_check_scope": "Full-release descriptive five-view retrieval including development records. All five angles were recomputed from current images. The current blinded study comprises 250 original pairs and 50 substituted controls at 90 degrees.",
+    "coordinate_review": "Within-observer repeatability was assessed using 2,244 paired photograph-derived detector-centre readings across 335 source volumes. The same observer read twice approximately one year apart, with first-session results concealed during the second session, and subsequently reviewed discrepant pairs. Agreement before review: median centre difference 0.50 mm, two-way mixed-effects, single-measurement, absolute-agreement ICC 0.990 (right axis) and 0.9997 (bottom axis); 63 records exceeded 2 mm and were reviewed by the same observer. 15 adjudications affected released records; 13 were applied after the automatic retrieval check confirmed an improved match, and 2 were reverted (the corrected window scored lower, or was indistinguishable) so that the released coordinates were kept. All 335 source volumes and all 2,229 crops remain 0.25 mm isotropic; the 2,216 crops whose coordinates were unchanged are byte-identical to the previous release. Initial adjudication proposed 16 changes: 15 concerned released records and one concerned an unreleased record. The current structured workflow export contains 46 retain_existing, 14 correct_to_new and 3 coordinate_uncertain decisions. Historical analysis retains the initial 44/16/3 counts. Current release crop-origin verification is reported separately from the preserved workflow flags.",
+    "coordinate_review_applied": [
+      "mou_s012",
+      "mou_s032",
+      "mou_s072",
+      "rab_s0103",
+      "rab_s0156",
+      "rab_s0203",
+      "rab_s0447",
+      "rab_s0449",
+      "rab_s0487",
+      "rab_s0847",
+      "rab_s0853",
+      "rab_s1661",
+      "rab_s1775"
+    ],
+    "coordinate_review_reverted": [
+      "mou_s111",
+      "mou_s142"
+    ],
+    "manual_pairing_qc": "Series-level reconciliation, image-quality assessment and pairing check carried out by the authors over all 335 source-volume series, covering all 2,229 released records. The checklist offered a series verdict, a free-text note, and per-record and per-round flagging; every series was accepted and nothing was flagged at this step. Of the 2,244 coordinate targets, 15 did not enter the release, in 11 source volumes. The per-series record and the checklist are in validation/release_qc/manual_qc.csv and validation/README.md. Reviewer identity is recorded as the authors.",
+    "manual_pairing_qc_scope": {
+      "series_reviewed": 335,
+      "series_accepted": 335,
+      "series_rejected_or_pending": 0,
+      "records_covered": 2229,
+      "records_total": 2229,
+      "crops_flagged": 0,
+      "radiograph_rounds_flagged": 0,
+      "series_with_orientation_operations": 7,
+      "reviewer_identity_recorded": true,
+      "mode": "series-level reconciliation of ct_cut against x_ray rounds, per source-volume series",
+      "reviewer": "authors",
+      "series_with_orientation_operations_note": "operations the review tool had queued, not operations present in the release; these seven series were never written back, and their released radiographs are byte-identical to the pre-edit copies",
+      "orientation_rotation_check": {
+        "documented_on": "2026-10-16",
+        "released_records_affected": 133,
+        "released_records_total": 2229,
+        "percent_affected": 5.97,
+        "released_radiographs_affected": 665,
+        "source_series_affected": 47,
+        "historical_manual_snapshot": {
+          "records": 110,
+          "radiographs": 550,
+          "source_series": 41,
+          "fields": "orientation_rot180_rounds; n_orientation_rot180_views; original reviewed_at unchanged"
+        },
+        "later_hash_verified": {
+          "records": 23,
+          "radiographs": 115,
+          "source_series": 8,
+          "operation_time": null,
+          "operation_actor": null
+        },
+        "final_fields": "final_orientation_rot180_target_indices; n_final_orientation_rot180_views",
+        "index_convention": "Original coordinate-target ordinal, not retained-crop ordinal.",
+        "evidence": "validation/release_qc/PROVENANCE.md; validation/release_qc/orientation_events.csv; metadata/radiograph_provenance.csv",
+        "scope": "Cumulative transform provenance, not independent anatomical orientation certification. Historical queued-operation counters are retained as historical annotations, not evidence of final applied transforms."
+      },
+      "decision_vocabulary": {
+        "series": {
+          "ok": "qualified, always exported",
+          "bad": "problematic, exported subject to options",
+          "reject": "unqualified, never exported",
+          "skip": "left for later"
+        },
+        "item_level": {
+          "excluded_cubes": "individual crops dropped on export",
+          "excluded_rounds": "whole radiograph rounds dropped on export"
+        },
+        "rejection_available_at": 3,
+        "rejection_used": 0
+      },
+      "prespecified_threshold": null,
+      "threshold_note": "unlike the coordinate review's 2 mm criterion, no numeric threshold was fixed for this step; acceptance records that the reviewer did not reject a series, not the outcome of a test with a pass mark",
+      "review_duration": {
+        "source": "reviewed_at, set on every state change, so consecutive values bound time per series",
+        "timestamps": 335,
+        "sessions": [
+          {
+            "date": "2026-09-14",
+            "series": 2
+          },
+          {
+            "date": "2026-09-22 05:26-05:36",
+            "series": 314,
+            "minutes": 9.4
+          },
+          {
+            "date": "2026-09-22 07:31-07:33",
+            "series": 19,
+            "minutes": 2.0
+          }
+        ],
+        "median_interval_seconds": 1.3,
+        "intervals_under_5s_percent": 97,
+        "total_active_minutes": 11.4,
+        "implication": "bounds how far the series images can have been inspected; the step is reported as a curation pass, not as an image-quality validation whose discrimination the record demonstrates"
+      },
+      "coverage": {
+        "records_total": 2229,
+        "blinded_review": 250,
+        "automated_check": 2229,
+        "overlap": 250,
+        "either": 2229,
+        "neither": 0,
+        "neither_percent": 0.0,
+        "automated_without_blinded_review": 1979,
+        "note": "All 2,229 released records have automated five-view ranks and series-level author quality inspection. The current blinded study displays 250 original pairs and 50 constructed controls.",
+        "blinded_constructed_controls": 50
+      },
+      "reviewer_identity_note": "The public reviewer column contains the author-supplied role authors; no named or authenticated individual is recorded.",
+      "views_inspected": [
+        60,
+        75,
+        90,
+        105,
+        120
+      ],
+      "quality_inspection_basis": "Authors' account of qualitative five-view inspection; manual_qc.csv records source-volume-series decisions, not independent per-view quantitative scores."
+    },
+    "automated_correspondence_check_ci": "Current Top-1 intervals: 4,000 partition-unit cluster bootstrap resamples, seed 20261016; fixed candidates. At 90 degrees: 86.0027% (1,917/2,229), interval 83.7267-88.2916%. See summary.csv.",
+    "dicom_uid_normalization": {
+      "files": 11145,
+      "invalid_sop_and_series_before": 9425,
+      "invalid_sop_and_series_after": 0,
+      "mapping": "metadata/dicom_uid_mapping.csv",
+      "evidence": "validation/release_qc/qc_summary.json#/supporting_checks/dicom_uid_normalization/report",
+      "stored_and_decoded_pixels_unchanged": true,
+      "study_and_series_grouping_preserved": true,
+      "scope": "UID, public-tag VR, file-meta, payload and decoding checks; not a full SOP Class IOD or PACS interoperability certification."
+    },
+    "open_analysis_formats": {
+      "excel_files_in_release": 0,
+      "replacement": "validation/coordinate_review/04_analysis/record_comparison_pre_review.csv; validation/coordinate_review/04_analysis/review_records.csv; validation/coordinate_review/04_analysis/analysis_summary.json",
+      "source_workbook_sha256": "7d4ce1293cbdbe960aeb5c577c5b8cb5db848bebdcb7b40dd729dc10b2f318c0",
+      "historical_sheets_preserved": 5,
+      "nonempty_cells_preserved": 30241,
+      "record_table_cells_exactly_matched_to_existing_csv": 30054,
+      "conversion_date": "2026-10-14",
+      "scope": "The workbook conversion counts below describe a historical preservation event. The workbook export itself is not distributed; current repeatability inputs and initial review decisions are supplied as CSV/JSON. Original scientific values and current release outcomes are unchanged."
+    },
+    "automated_correspondence_check_90_reference": "The 90-degree slice of the current five-view analysis: Top-1 1,917/2,229 (86.0%); Top-3 2,147/2,229 (96.3%); score-discrimination AUC 0.962733. Filter validation/multiview_retrieval/per_record.csv on angle = 90.",
+    "release_pipeline_archive": "https://github.com/vlee-GG/paired-radiograph-cbct-code/blob/5ca9ec57954239b62e8a84bd9107a4a30e6da9b4/archive/release_tools_20261016.zip"
+  },
+  "validation_steps": {
+    "order": [
+      "coordinate_verification",
+      "manual_quality_control",
+      "anatomical_correspondence_review",
+      "automated_retrieval_check"
+    ],
+    "1_coordinate_verification": {
+      "status": "complete",
+      "evidence": "validation/coordinate_review/",
+      "records_compared": 2244,
+      "source_volumes": 335,
+      "trigger_threshold_mm": 2,
+      "triggered": 63,
+      "decisions": {
+        "correct_to_new": 14,
+        "retain_existing": 46,
+        "coordinate_uncertain": 3
+      },
+      "applied_to_release": 13,
+      "reverted": 2,
+      "agreement": {
+        "median_centre_difference_mm": 0.5,
+        "icc_2_1_right": 0.9896,
+        "icc_2_1_bottom": 0.9997
+      },
+      "initial_adjudication_decisions": {
+        "retain_existing": 44,
+        "correct_to_new": 16,
+        "coordinate_uncertain": 3
+      },
+      "decision_scope": "The decisions field counts the current third_review_records.json export after two reversions. Initial adjudication counts are retained separately.",
+      "proposed_corrections_in_release": 15,
+      "proposed_corrections_not_in_release": 1,
+      "state_evidence": {
+        "release_version": "1.0.0",
+        "documentation_as_of": "2026-10-14",
+        "initial_proposed_corrections": 16,
+        "proposed_corrections_in_release": 15,
+        "applied_to_release": 13,
+        "reverted_to_existing": 2,
+        "not_in_release": 1,
+        "workflow_export_decisions": {
+          "correct_to_new": 14,
+          "retain_existing": 46,
+          "coordinate_uncertain": 3
+        },
+        "published_coordinate_authority": "source_cbct/**/*__coordinates.txt",
+        "published_crop_origins": "metadata/metadata.csv",
+        "current_release_summary": "validation/release_qc/qc_summary.json",
+        "release_validation_evidence": "validation/release_qc/release_validation.csv",
+        "crop_reextraction_evidence": "validation/release_qc/qc_summary.json#/checks/crop_origin_verification",
+        "interpretation": "Workflow downstream flags describe their recorded export, not the later full-release crop re-extraction. They have not been retroactively set to true."
+      },
+      "status_scope": "Complete for the published release; this does not mark all four historical workflow flags true or validate the one unreleased proposed correction."
+    },
+    "2_manual_quality_control": {
+      "status": "complete",
+      "evidence": "validation/release_qc/manual_qc.csv",
+      "series_reviewed": 335,
+      "records_covered": 2229,
+      "series_accepted": 335,
+      "crops_excluded": 0,
+      "radiograph_rounds_excluded": 0
+    },
+    "3_anatomical_correspondence_review": {
+      "status": "complete",
+      "evidence": "validation/anatomical_review/",
+      "protocol": "validation/anatomical_review/PROTOCOL.md",
+      "study_id": "blinded_review_20261016",
+      "analysis_version": "first_confirmed_submission",
+      "cases": 300,
+      "original_pairs": 250,
+      "substituted_controls": 50,
+      "source_volumes": 251,
+      "query_partition_units": 95,
+      "reader1_label_agreement_n": 287,
+      "reader2_label_agreement_n": 217,
+      "between_reader_agreement_n": 211,
+      "discrepant_cases": 89,
+      "author_reviewed_discrepant_cases": 89,
+      "original_scores_replaced": false,
+      "previous_separate_study": null,
+      "author_followup": {
+        "study_id": "author_followup_91_20261025",
+        "cases_reviewed": 91,
+        "original_pairs": 82,
+        "substituted_controls": 9,
+        "reviewers": [
+          "滕宏"
+        ],
+        "record_finalised_on": "2026-10-25",
+        "case_level_outcomes_provided": true,
+        "case_level_table": "author_review_records.csv",
+        "outcomes_by_reference_class": {
+          "original": {
+            "corresponding": 82
+          },
+          "substituted": {
+            "different": 9
+          }
+        },
+        "basis_counts": {
+          "difference": 9,
+          "bone": 75,
+          "joint": 34
+        },
+        "basis_options": {
+          "bone": "Similar bony contours or trajectories",
+          "joint": "Compatible joint morphology or relative anatomical relationships",
+          "difference": "Visible structural differences",
+          "limited": "Insufficient displayed information"
+        },
+        "primary_materials": "Panels A (90-degree radiograph) and B (CBCT maximum-intensity projection).",
+        "reference_labels_available": true,
+        "first_submission_answers_available": true,
+        "original_scores_replaced": false,
+        "interpretation": "Descriptive unblinded author follow-up of all cases with at least one label-discordant or uncertain answer, separate from the blinded first-submission analysis.",
+        "unresolved_basis_cases": [],
+        "reference_label_agreement_n": 91,
+        "reference_label_agreement_denominator": 91,
+        "reference_label_agreement_percent": 100.0,
+        "review_dates": [
+          "2026-10-24",
+          "2026-10-25"
+        ],
+        "scope": "At least one reader answer differed from the reference label, including uncertain responses.",
+        "scope_counts": {
+          "between_reader_disagreements": 89,
+          "shared_reference_deviations": 2
+        },
+        "shared_reference_deviation_cases": [
+          "c0065",
+          "c0280"
+        ]
+      },
+      "author_reviewed_cases": 91,
+      "author_reviewed_shared_reference_deviations": 2,
+      "previous_separate_study_status": "Historical September study is outside the current publication package and is not pooled with this study."
+    },
+    "4_automated_retrieval_check": {
+      "status": "complete",
+      "evidence": "validation/multiview_retrieval/",
+      "records_evaluated": 2229,
+      "views_evaluated": 5,
+      "candidates_per_record": 20,
+      "scope": "Full-release independent-view descriptive retrieval",
+      "per_angle": [
+        {
+          "subset": "all",
+          "angle": "60",
+          "records": "2229",
+          "top1_count": "762",
+          "top3_count": "1346",
+          "top5_count": "1632",
+          "top1_percent": "34.185733512786",
+          "top3_percent": "60.38582323912068",
+          "top1_cluster_ci_low": "31.26222390394121",
+          "top1_cluster_ci_high": "37.01549283117577",
+          "mean_rank": "4.379991027366532",
+          "auc": "0.8092846322153008"
+        },
+        {
+          "subset": "all",
+          "angle": "75",
+          "records": "2229",
+          "top1_count": "1376",
+          "top3_count": "1915",
+          "top5_count": "2069",
+          "top1_percent": "61.73171825930911",
+          "top3_percent": "85.91296545536115",
+          "top1_cluster_ci_low": "58.7319118752242",
+          "top1_cluster_ci_high": "64.53577833039412",
+          "mean_rank": "2.1686855091969495",
+          "auc": "0.9107677946928582"
+        },
+        {
+          "subset": "all",
+          "angle": "90",
+          "records": "2229",
+          "top1_count": "1917",
+          "top3_count": "2147",
+          "top5_count": "2177",
+          "top1_percent": "86.00269179004037",
+          "top3_percent": "96.32122027815164",
+          "top1_cluster_ci_low": "83.7266788480811",
+          "top1_cluster_ci_high": "88.29162149660674",
+          "mean_rank": "1.4118438761776582",
+          "auc": "0.9627327555538734"
+        },
+        {
+          "subset": "all",
+          "angle": "105",
+          "records": "2229",
+          "top1_count": "1150",
+          "top3_count": "1755",
+          "top5_count": "1970",
+          "top1_percent": "51.592642440556304",
+          "top3_percent": "78.73485868102289",
+          "top1_cluster_ci_low": "48.51100289678035",
+          "top1_cluster_ci_high": "54.62380055203944",
+          "mean_rank": "2.6460296096904443",
+          "auc": "0.8903075484474485"
+        },
+        {
+          "subset": "all",
+          "angle": "120",
+          "records": "2229",
+          "top1_count": "596",
+          "top3_count": "1155",
+          "top5_count": "1472",
+          "top1_percent": "26.738447734410048",
+          "top3_percent": "51.81695827725438",
+          "top1_cluster_ci_low": "24.048309796864093",
+          "top1_cluster_ci_high": "29.29218841594678",
+          "mean_rank": "5.017945266935846",
+          "auc": "0.7785233574115206"
+        }
+      ],
+      "analysis_date": "2026-10-16"
+    }
+  },
+  "documentation_reconciled_on": "2026-10-24",
+  "documentation_reconciliation_basis": {
+    "review_records": "validation/anatomical_review/review_records.csv",
+    "retrieval_records": "validation/multiview_retrieval/per_record.csv",
+    "note": "Current retrieval statistics recomputed from the 2026-10-16 scores. Top-1 intervals use partition-unit cluster bootstrap; previous full-release analyses are not distributed.",
+    "coordinate_documentation_update": "2026-10-14: Current release summaries reconciled with the preserved coordinate workflow export and explicitly labelled historical analysis; no readings, per-record decisions, pixels or crop coordinates were changed.",
+    "five_view_retrieval_records": "validation/multiview_retrieval/per_record.csv",
+    "anatomical_review": "Frozen first confirmed submissions of two clinicians plus a separate 91-case unblinded author follow-up table."
+  },
+  "five_view_retrieval": {
+    "analysis": "five_view_independent_retrieval",
+    "records": 2229,
+    "radiographs": 11145,
+    "candidates_per_query": 20,
+    "distractor_seed": 20260920,
+    "score_shape": [
+      2229,
+      5,
+      20
+    ],
+    "ct_reference": "Mean over the third array axis of crop[10:110,20:140,:]; percentile window 1-99.5; gradient NCC.",
+    "working_image_size": [
+      139,
+      114
+    ],
+    "search": {
+      "vertical_shift_pixels": [
+        62,
+        50,
+        27,
+        50,
+        62
+      ],
+      "horizontal_shift_pixels": 20,
+      "rotation_magnification_variants": [
+        [
+          0,
+          1
+        ],
+        [
+          -6,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          -3,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          1.08
+        ],
+        [
+          -6,
+          1.08
+        ],
+        [
+          6,
+          1.08
+        ]
+      ]
+    },
+    "development": {
+      "legacy90": "Search variants developed on 255 records from a 511-record sample.",
+      "angle_extension": "13 configurations compared on 80 queries (20 per anatomical subset), drawn from 445 records in fold 0; chosen model angle_shift_axis1_factor1. Candidate pool uses the complete release."
+    },
+    "reporting": "Full-release descriptive retrieval, no view fusion; per-view rank=1+number of distractors with strictly greater NCC.",
+    "scope": "Approximate anatomical correspondence; uncalibrated reference descriptor, not measured registration error. Five views are analyzed separately, not statistically independent experiments.",
+    "provenance": "All five angles freshly recomputed from current image bytes on 2026-10-16; no old scores or features used. 222,900 finite scores; original angle-first numerical verification passed. Only the current full-release analysis is distributed.",
+    "materials": "validation/multiview_retrieval/",
+    "verification": "validation/release_qc/qc_summary.json#/supporting_checks/retrieval_verification/report"
+  },
+  "last_integrity_documented_on": "2026-10-16",
+  "supporting_checks": {
+    "dicom_uid_normalization": {
+      "original_path": "validation/dicom_uid_normalization.json",
+      "original_sha256": "34f2d359018cdf7b83e6f01a523d40a6f8bcde055ebb560a43368fc12abd9fce",
+      "report": {
+        "date": "2026-10-13",
+        "release": "1.0.0",
+        "files_normalized": 11145,
+        "nonconformant_sop_uids_before": 9425,
+        "nonconformant_series_uids_before": 9425,
+        "nonconformant_sop_uids_after": 0,
+        "nonconformant_series_uids_after": 0,
+        "new_unique_sop_uids": 11145,
+        "series_grouping_preserved": true,
+        "old_unique_series": 11145,
+        "new_unique_series": 11145,
+        "study_uids_unchanged": true,
+        "transfer_syntax_unchanged": true,
+        "stored_pixel_bytes_identical": 11145,
+        "decoded_pixel_arrays_identical": 11145,
+        "header_repairs": {
+          "ContextIdentifier:omit_malformed_optional_export_field": 11145,
+          "ContextUID:omit_malformed_optional_export_field": 11145,
+          "PatientTelephoneNumbers:correct_vr": 11010,
+          "VOILUTFunction:correct_vr": 11145,
+          "ScheduledProtocolCodeSequence:correct_empty_sequence": 11145,
+          "PerformedProtocolType:omit_malformed_optional_export_field": 11145
+        },
+        "uid_method": "UUID-derived 2.25 decimal identifiers; one-to-one SOP and original-Series mapping",
+        "namespace_uuid": "ff172fb1-f5da-41ac-8582-f3a649c4e392",
+        "mapping": "metadata/dicom_uid_mapping.csv",
+        "originals_backup": "Original pre-normalization published DICOMs retained by the authors outside the release; they are orientation-standardised exports, not the original acquisition exports.",
+        "scope": "UID, public-tag VR, file-meta, payload and decoding checks; not a full SOP Class IOD or PACS interoperability certification."
+      }
+    },
+    "all_views_pixel_qc": {
+      "original_path": "validation/multiview_retrieval/all_views_pixel_qc.json",
+      "original_sha256": "7420b35306599ae3563b88d6f5e165806c176d7af5556f42252a6eace4b674fb",
+      "report": {
+        "status": "passed",
+        "date": "2026-10-16",
+        "radiographs": 11145,
+        "decode_ok": 11145,
+        "finite": 11145,
+        "nonconstant": 11145,
+        "sha256_verified": 11145,
+        "bytes_verified": 11145,
+        "evidence": "all_views_pixel_qc.csv; input_file_hashes.csv"
+      }
+    },
+    "current_radiograph_hash_verification": {
+      "original_path": "validation/multiview_retrieval/current_radiograph_hash_verification.json",
+      "original_sha256": "f018dda5bf5a504d57d252fad818c514361f2d1554703e11926f4000ad687750",
+      "report": {
+        "status": "passed",
+        "date": "2026-10-16",
+        "radiographs": 11145,
+        "input_files": 13374,
+        "scoring_input_evidence": "input_file_hashes.csv",
+        "final_instance_evidence": "../../metadata/radiograph_provenance.csv",
+        "bridge": "validation/release_qc/qc_summary.json#/supporting_checks/scoring_input_bridge/report",
+        "current_pixel_arrays_equal_scoring_inputs": true,
+        "header_only_updates": 115
+      }
+    },
+    "orientation_verification": {
+      "original_path": "validation/orientation_verification.json",
+      "original_sha256": "7852e608dc384eee02faa64063b46a2b82b71b9bb5043719b9bdb12ccc1f368a",
+      "report": {
+        "status": "passed",
+        "radiographs": 11145,
+        "later_rotated_records": 23,
+        "later_rotated_views": 115,
+        "historical_extra_rot180_records": 110,
+        "final_extra_rot180_records": 133,
+        "final_extra_rot180_views": 665,
+        "final_source_series": 47,
+        "pixels_changed_by_uid_staging": 0,
+        "unknown_original_operation_times_and_actors": true
+      }
+    },
+    "release_pipeline_verification": {
+      "original_path": "validation/release_pipeline_verification.json",
+      "original_sha256": "e155b1cbe50059dbcf6ef0961e775a7471b0f017c7209cd3918e4c9ecd1b5354",
+      "report": {
+        "documented_on": "2026-10-16",
+        "checks": {
+          "metadata": {
+            "status": "passed",
+            "records": 2229,
+            "rows_identical": true,
+            "provenance": "Curated record selection and biological IDs are explicit input annotations. Crop boxes and derived fields recomputed from coordinate TXT and source headers."
+          },
+          "coordinates": {
+            "status": "passed",
+            "records": 2229,
+            "source_volumes": 335,
+            "coordinate_targets": 2244,
+            "unused_targets": 15,
+            "shifted_records": 20,
+            "scope": "Unique coordinate-to-record box reproduction; does not measure anatomical registration error."
+          },
+          "crops": {
+            "status": "passed",
+            "records": 2229,
+            "source_volumes": 335,
+            "full_release": true,
+            "scope": "Scaled voxel reproduction within crop quantization tolerance; array-space boxes, not pixel-to-voxel anatomical registration."
+          },
+          "partitions": {
+            "status": "passed",
+            "units": 100,
+            "published_tables_match": true,
+            "all_overlaps_zero": true,
+            "allocation": "Frozen published unit IDs/folds replayed from explicit allocation inputs; grouping computed from record links. No claim to recover an undocumented original randomization seed."
+          },
+          "files": {
+            "status": "passed",
+            "files": 14044,
+            "hash_mode": "actual",
+            "actual_file_hashes_recomputed": true,
+            "preserved_fields": "Stable IDs, roles and QC notes are read from the published annotation tables; bytes, hashes and imaging-header/decode checks are regenerated."
+          },
+          "normalization_replay_spot_check": {
+            "status": "passed",
+            "files": 10,
+            "scope": "Historical event replay; requires pre-normalization exports, which are not claimed to be raw detector frames or included in the public release."
+          },
+          "orientation": {
+            "status": "passed",
+            "radiographs": 11145,
+            "later_rotated_records": 23,
+            "later_rotated_views": 115,
+            "historical_extra_rot180_records": 110,
+            "final_extra_rot180_records": 133,
+            "final_extra_rot180_views": 665,
+            "final_source_series": 47,
+            "pixels_changed_by_uid_staging": 0,
+            "unknown_original_operation_times_and_actors": true
+          },
+          "historical_review": {
+            "status": "passed",
+            "cases": 300,
+            "byte_identical": 300,
+            "pixel_identical": 300
+          },
+          "historical_normalized_snapshot_recovery": {
+            "status": "passed",
+            "files": 115,
+            "byte_identical": 115
+          }
+        },
+        "environment": {
+          "numpy": "1.26.4",
+          "nibabel": "5.4.2",
+          "pydicom": "3.0.2",
+          "PIL": "10.4.0"
+        }
+      }
+    },
+    "retrieval_verification": {
+      "original_path": "validation/multiview_retrieval/verification.json",
+      "original_sha256": "786a46853d585f87e557bfc349d8bf6cd50e4caa636c4953a2f765771572f755",
+      "report": {
+        "status": "passed",
+        "records": 2229,
+        "radiographs": 11145,
+        "image_inputs": 13374,
+        "candidate_scores": 222900,
+        "all_scores_finite": true,
+        "all_five_angles_fresh": true,
+        "old_scores_reused": false,
+        "queries_with_tied_recorded_score": 0,
+        "bootstrap": "4,000 partition-unit cluster resamples; seed 20261016; conditional on fixed candidate sets and linkage metadata.",
+        "analysis_code_sha256": "51f2eb590b792decae6e317f7b34af441e249ec9b121ffaab4ad247b9f20a9a8",
+        "portable_script_sha256": "5cdfc916cc920312b165bc954f0b455de6bda179f7d037defaeabffb9aaf3417"
+      }
+    },
+    "partition_overlap_check": {
+      "original_path": "validation/release_qc/partition_overlap_check.csv",
+      "original_sha256": "ce00f4afbbc91cfb1a2fc943aec9e53b0877e8f10fd5839f706212ef5f86d5a7",
+      "columns": [
+        "fold_pair",
+        "shared_data_groups",
+        "shared_source_volumes",
+        "shared_verified_animals",
+        "shared_specimens"
+      ],
+      "rows": [
+        {
+          "fold_pair": "0-1",
+          "shared_data_groups": "0",
+          "shared_source_volumes": "0",
+          "shared_verified_animals": "0",
+          "shared_specimens": "0"
+        },
+        {
+          "fold_pair": "0-2",
+          "shared_data_groups": "0",
+          "shared_source_volumes": "0",
+          "shared_verified_animals": "0",
+          "shared_specimens": "0"
+        },
+        {
+          "fold_pair": "0-3",
+          "shared_data_groups": "0",
+          "shared_source_volumes": "0",
+          "shared_verified_animals": "0",
+          "shared_specimens": "0"
+        },
+        {
+          "fold_pair": "0-4",
+          "shared_data_groups": "0",
+          "shared_source_volumes": "0",
+          "shared_verified_animals": "0",
+          "shared_specimens": "0"
+        },
+        {
+          "fold_pair": "1-2",
+          "shared_data_groups": "0",
+          "shared_source_volumes": "0",
+          "shared_verified_animals": "0",
+          "shared_specimens": "0"
+        },
+        {
+          "fold_pair": "1-3",
+          "shared_data_groups": "0",
+          "shared_source_volumes": "0",
+          "shared_verified_animals": "0",
+          "shared_specimens": "0"
+        },
+        {
+          "fold_pair": "1-4",
+          "shared_data_groups": "0",
+          "shared_source_volumes": "0",
+          "shared_verified_animals": "0",
+          "shared_specimens": "0"
+        },
+        {
+          "fold_pair": "2-3",
+          "shared_data_groups": "0",
+          "shared_source_volumes": "0",
+          "shared_verified_animals": "0",
+          "shared_specimens": "0"
+        },
+        {
+          "fold_pair": "2-4",
+          "shared_data_groups": "0",
+          "shared_source_volumes": "0",
+          "shared_verified_animals": "0",
+          "shared_specimens": "0"
+        },
+        {
+          "fold_pair": "3-4",
+          "shared_data_groups": "0",
+          "shared_source_volumes": "0",
+          "shared_verified_animals": "0",
+          "shared_specimens": "0"
+        }
+      ],
+      "original_csv_utf8": "fold_pair,shared_data_groups,shared_source_volumes,shared_verified_animals,shared_specimens\r\n0-1,0,0,0,0\r\n0-2,0,0,0,0\r\n0-3,0,0,0,0\r\n0-4,0,0,0,0\r\n1-2,0,0,0,0\r\n1-3,0,0,0,0\r\n1-4,0,0,0,0\r\n2-3,0,0,0,0\r\n2-4,0,0,0,0\r\n3-4,0,0,0,0\r\n",
+      "scope": "All ten pairs of the published five folds. Counts are CSV strings; original_csv_utf8 preserves the exact original CSV text including line endings."
+    },
+    "scoring_input_bridge": {
+      "original_path": "validation/multiview_retrieval/current_input_bridge.json",
+      "original_sha256": "43f8c555d3ce4e3e8c2862f4aadab53ea50ffafd917209bceb30a8e77b32032e",
+      "report": {
+        "status": "passed",
+        "documented_on": "2026-10-16",
+        "scoring_snapshot_preserved": true,
+        "input_files": 13374,
+        "header_only_updates": 115,
+        "pixel_arrays_identical": 115,
+        "other_inputs_actual_hash_verified": 13259,
+        "candidate_scores_sha256": "851061e36539bfb0a4f482c3d5e38da89a4aa37708b51113592764ccb52d2c55",
+        "score_values_changed": false,
+        "input_snapshot_manifest_sha256": "6a9723a390d1907cfe754409e3139465d70a667c75ca8eda005dbf01d0be87af",
+        "mapping": "metadata/radiograph_provenance.csv",
+        "scope": "The original scoring-input table and timestamps remain unchanged. Current whole-file hashes for the 115 newly identified DICOM instances differ only because of UID/provenance headers. Exact PixelData and decoded arrays are unchanged; no new image analysis or anatomical review is implied."
+      }
+    }
+  },
+  "validation_layout": {
+    "organized_on": "2026-10-18",
+    "directories": [
+      "coordinate_review",
+      "release_qc",
+      "anatomical_review",
+      "multiview_retrieval"
+    ],
+    "historical_archive": null,
+    "coordinate_difference_definition": "Euclidean distance between paired detector-centre coordinate readings, converted from cm to mm.",
+    "scientific_results_changed": false,
+    "validation_files": 707,
+    "coordinate_txt_restored_on": "2026-10-19",
+    "restored_coordinate_txt_files": 670,
+    "restored_coordinate_txt_paths": [
+      "validation/coordinate_review/01_coordinates/new_readings/",
+      "validation/coordinate_review/01_coordinates/target_final/"
+    ],
+    "anatomical_review_updated_on": "2026-10-24",
+    "author_followup_updated_on": "2026-10-25",
+    "publication_cleanup_on": "2026-10-26",
+    "historical_archive_status": "Historical archives and supporting code removed from the data package; current validation evidence remains in the four validation directories. Supporting code is in the versioned GitHub archive.",
+    "merged_reports": {
+      "retrieval_verification": "supporting_checks.retrieval_verification",
+      "partition_overlap_check": "supporting_checks.partition_overlap_check",
+      "scoring_input_bridge": "supporting_checks.scoring_input_bridge"
+    },
+    "distributed_split": "metadata/splits/example_5fold_by_partition_unit.csv",
+    "checksum_authority": "SHA256SUMS.txt",
+    "development_records": "validation/multiview_retrieval/development.json",
+    "provenance_document": "validation/release_qc/PROVENANCE.md"
+  }
+}
