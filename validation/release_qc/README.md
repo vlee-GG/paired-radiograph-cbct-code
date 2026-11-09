@@ -10,7 +10,7 @@
 | `orientation_events.csv` | Per-view transformation provenance |
 | `PROVENANCE.md` | UID/header normalization, final orientation and the relation between scored inputs and current files |
 
-All 14,044 imaging and coordinate-file rows remain in `../../metadata/files.csv` and `file_qc.csv`. Imaging and source-coordinate bytes were not modified by this reorganization. Crop checks evaluate extraction from arrays; coordinate-reading differences evaluate detector-centre localization.
+All 14,044 imaging and coordinate-file rows are indexed in the separate dataset's `metadata/files.csv`, including consolidated `qc_` fields. The original tables are preserved in `metadata_snapshot/`. Imaging and source-coordinate bytes were not modified by this reorganization. Crop checks evaluate extraction from arrays; coordinate-reading differences evaluate detector-centre localization.
 
 Paths embedded in unchanged DICOM DerivationDescription fields describe the earlier release layout. In particular, the historical `validation/orientation_events.csv` now resolves to `validation/release_qc/orientation_events.csv`; the files themselves are not reserialized to edit that historical text.
 

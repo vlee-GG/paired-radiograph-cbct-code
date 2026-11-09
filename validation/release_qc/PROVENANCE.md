@@ -11,7 +11,7 @@ The exports contain one distinct SeriesInstanceUID per radiograph. That existing
 is preserved. No series were merged, and no record, view or source-volume link changed.
 The pre-normalization files contain no referenced-UID sequences.
 
-metadata/dicom_uid_mapping.csv contains one row per radiograph, identified by its path,
+The historical table `metadata_snapshot/dicom_uid_mapping.csv` contains one row per radiograph, identified by its path,
 sample, source volume and nominal view. Old UID strings are historical text and may not
 be valid DICOM UIDs. Old/new whole-file hashes and sizes support provenance. Stored-pixel
 and decoded-array hashes are equal before and after normalization. The per-row JSON
@@ -34,7 +34,7 @@ certification and do not calibrate image geometry or resolve PixelSpacing limita
 
 ### Historical snapshot and final instances (2026-10-16)
 
-This report and dicom_uid_mapping.csv describe the 2026-10-13 event. Their original hashes and counts are preserved. Later reorientation affects 115 instances; final file hashes and SOP UIDs are in metadata/radiograph_provenance.csv. See the final-orientation section below for the cumulative 133-record / 665-view / 47-series status and exact snapshot recovery.
+This report and dicom_uid_mapping.csv describe the 2026-10-13 event. Their original hashes and counts are preserved. Later reorientation affects 115 instances; final file hashes and SOP UIDs are retained in the separate dataset's metadata/files.csv (sha256 and provenance_ fields); the original table is in metadata_snapshot/radiograph_provenance.csv. See the final-orientation section below for the cumulative 133-record / 665-view / 47-series status and exact snapshot recovery.
 
 ### Retained acquisition and specimen fields
 
@@ -42,13 +42,13 @@ The released headers retain the acquisition-system StudyDate, SeriesDate and Stu
 
 ## Final orientation
 
-The 2026-10-13 normalization mapping is an immutable historical event snapshot. It is not a table of final hashes after subsequent reorientation. `metadata/radiograph_provenance.csv` records all 11,145 final instances and links them to that snapshot.
+The 2026-10-13 normalization mapping is an immutable historical event snapshot. It is not a table of final hashes after subsequent reorientation. `metadata_snapshot/radiograph_provenance.csv` records all 11,145 final instances and links them to that snapshot. Its fields are also consolidated with the `provenance_` prefix in the separate dataset's `metadata/files.csv`.
 
 The original manual QC records 110 paired records (550 views) with an extra 180-degree rotation relative to the author-reported base transform. Comparison with the normalized pixel hashes identifies 23 additional mouse records (115 views): applying the inverse 180-degree rotation reproduces the historical stored-pixel SHA-256 exactly. The cumulative final status is **133 records (6.0%), 665 views, in 47 source series**. The original operation time and actor are unknown and remain blank in `orientation_events.csv`; 2026-10-16 is the documentation date.
 
 Original `orientation_rot180_rounds` uses the coordinate-target ordinal, which can differ from retained-crop order after exclusions. The final fields in `manual_qc.csv` explicitly use coordinate-target ordinals. Original columns, review dates and review judgements are preserved. These records describe applied transformations and their evidence; they do not independently certify anatomical laterality or direction.
 
-The 115 later-reoriented images receive distinct SOP instance UIDs with matching file-meta UIDs, a SourceImageSequence referencing the historical normalized instance, and a DerivationDescription. This header update preserves all PixelData bytes and decoded arrays. Study and series grouping are unchanged. No geometric axes were invented. Final file sizes/hashes are synchronized in files.csv, file_qc.csv, radiograph_provenance.csv and the root manifest.
+The 115 later-reoriented images receive distinct SOP instance UIDs with matching file-meta UIDs, a SourceImageSequence referencing the historical normalized instance, and a DerivationDescription. This header update preserves all PixelData bytes and decoded arrays. Study and series grouping are unchanged. No geometric axes were invented. Current file sizes/hashes are indexed in the separate dataset's metadata/files.csv and SHA256SUMS.txt. The pre-consolidation tables are retained in metadata_snapshot/ for historical interpretation.
 
 ## Scoring inputs and final released files
 
