@@ -1,6 +1,6 @@
 # Paired radiograph–CBCT: code and validation
 
-Code and technical-validation evidence for 2,229 paired rabbit/mouse records. Imaging data are deposited separately on PhysioNet (project under preparation).
+Code and technical-validation evidence for 2,229 paired rabbit/mouse records. The imaging-data package is being prepared for a separate deposit on PhysioNet.
 
 ```text
 scripts/       CBCT cropping and five-view retrieval programs
@@ -10,6 +10,12 @@ validation/
   multiview_retrieval/   Independent retrieval at five angles
   anatomical_review/    Blinded clinician review and author re-examination
 ```
+
+## Imaging-data access
+
+The version 1.0.0 imaging-data package is being prepared for deposition on PhysioNet under the PhysioNet Contributor Review Health Data License 1.5.0. Access is subject to contributor approval.
+
+Code is licensed under MIT; dataset-derived validation records in this GitHub repository are licensed under CC BY 4.0. The PhysioNet imaging-data package follows the contributor-review policy stated above.
 
 ## Run
 
@@ -26,3 +32,4 @@ The retrieval program uses the reorganized published dataset layout and fixed ca
 The four validation directories contain protocols, inputs, per-record results and summaries. They replace validation evidence previously bundled in the imaging deposit. `release_qc/metadata_snapshot/` preserves the pre-consolidation tables for interpretation of frozen validation inputs. Current dataset metadata consolidate these fields into `metadata.csv` and `files.csv`. Scientific results are unchanged by relocation. Historical input fingerprints describe their recorded snapshots; current repository checksums are in `validation/MANIFEST_SHA256.txt`.
 
 Code license: MIT (`LICENSE`). Dataset-derived validation records: CC BY 4.0 (`validation/DATA_LICENSE.txt`). Cite the dataset and the fixed code/validation release used. No archival DOI has yet been assigned.
+
