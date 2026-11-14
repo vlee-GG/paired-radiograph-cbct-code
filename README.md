@@ -36,8 +36,5 @@ The retrieval program uses the reorganized published dataset layout and fixed ca
 The four validation directories contain protocols, inputs, per-record results and summaries. They replace validation evidence previously bundled in the imaging deposit. `release_qc/metadata_snapshot/` preserves the pre-consolidation tables for interpretation of frozen validation inputs. Current dataset metadata consolidate these fields into `metadata.csv` and `files.csv`. Scientific results are unchanged by relocation. Historical input fingerprints describe their recorded snapshots; current repository checksums are in `validation/MANIFEST_SHA256.txt`.
 
 ## Citation and fixed code release
-
-Teng, H., Huang, Y., Gao, W. & Liu, W. *Paired physically acquired five-view radiographs and cone-beam computed tomography of rabbits and mice*. Version 1.0.0. Zenodo. https://doi.org/10.5281/zenodo.24156428
-
-Cite the dataset alongside the code/validation version used. The fixed code and validation snapshot is [v1.1.1](https://github.com/vlee-GG/paired-radiograph-cbct-code/releases/tag/v1.1.1), commit `90a0b26ead05107e20ab1e0a487149d4af48bed5`. The dataset DOI identifies the imaging deposit; it is not a DOI for the code release. Current documentation updates on `main` do not change that fixed snapshot.
+Cite the dataset alongside the code/validation version used. The fixed code and validation snapshot is [v1.1.1](https://github.com/vlee-GG/paired-radiograph-cbct-code/releases/tag/v1.1.1), commit `90a0b26ead05107e20ab1e0a487149d4af48bed5`. 
 
