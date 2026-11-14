@@ -1,6 +1,6 @@
 # Paired radiograph–CBCT: code and validation
 
-Code and technical-validation evidence for 2,229 paired rabbit/mouse records: five physically acquired radiographs and one local CBCT crop per record. The imaging data and consolidated reuse metadata are plan to deposite separately in Zenodo. The pairs describe approximate local anatomical correspondence.
+Code and technical-validation evidence for 2,229 paired rabbit/mouse records: five physically acquired radiographs and one local CBCT crop per record. The imaging data and consolidated reuse metadata are being prepared for separate deposition in Zenodo. The pairs describe approximate local anatomical correspondence.
 
 ```text
 scripts/       CBCT cropping and five-view retrieval programs
@@ -13,7 +13,7 @@ validation/
 
 ## Imaging-data access
 
-The version 1.0.0 imaging-data package is plan to deposite in zenodo. Its access policy is open download under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The version 1.0.0 imaging-data package is being prepared for deposition in Zenodo. Its access policy is open download under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 The Zenodo deposit contains one archive, `paired-radiograph-cbct.zip` (49,125,707,075 bytes; approximately 49.13 GB). Extract it before running the programs and use the extracted `paired-radiograph-cbct/` directory as the dataset root. The archive contains 14,052 files: 11,145 DICOM radiographs, 2,229 local NIfTI crops, 335 source NIfTI volumes, 335 coordinate TXT files, seven metadata/documentation files and the root README.
 
@@ -36,5 +36,5 @@ The retrieval program uses the reorganized published dataset layout and fixed ca
 The four validation directories contain protocols, inputs, per-record results and summaries. They replace validation evidence previously bundled in the imaging deposit. `release_qc/metadata_snapshot/` preserves the pre-consolidation tables for interpretation of frozen validation inputs. Current dataset metadata consolidate these fields into `metadata.csv` and `files.csv`. Scientific results are unchanged by relocation. Historical input fingerprints describe their recorded snapshots; current repository checksums are in `validation/MANIFEST_SHA256.txt`.
 
 ## Citation and fixed code release
-Cite the dataset alongside the code/validation version used. The fixed code and validation snapshot is [v1.1.1](https://github.com/vlee-GG/paired-radiograph-cbct-code/releases/tag/v1.1.1), commit `90a0b26ead05107e20ab1e0a487149d4af48bed5`. 
+Cite the dataset alongside the code/validation version used. The fixed code and validation snapshot is [v1.1.1](https://github.com/vlee-GG/paired-radiograph-cbct-code/releases/tag/v1.1.1).
 
