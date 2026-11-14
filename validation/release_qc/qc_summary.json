@@ -40,7 +40,8 @@
       "not_released": 15,
       "retained": 2229,
       "source_volumes_with_unreleased_targets": 11,
-      "evidence": "validation/release_qc/release_validation.csv; validation/release_qc/exclusions.csv"
+      "evidence": "validation/release_qc/release_validation.csv; validation/release_qc/unused_coordinate_targets.csv",
+      "scope": "Final coordinate-target membership, independently reconciled against release metadata; historical deletion actions are not the final exclusion list."
     },
     "automated_correspondence_check": "All 2,229 records freshly scored at five views against identical 20-candidate sets. Top1 [60,75,90,105,120] = [34.2,61.7,86.0,51.6,26.7]%; Top3 = [60.4,85.9,96.3,78.7,51.8]%. Current analysis: 2026-10-16; validation/multiview_retrieval/.",
     "automated_correspondence_check_seeds": {

@@ -5,7 +5,7 @@ Four directories provide the protocols, record-level evidence and summaries used
 | Step | Directory | Main evidence |
 |---|---|---|
 | 1. Detector-centre coordinate readings | `coordinate_review/` | 2,244 paired readings, agreement statistics and adjudication |
-| 2. Full-release quality and reproducibility | `release_qc/` | Five-view series review, crop/coordinate reproduction, exclusions, file integrity and partition checks |
+| 2. Full-release quality and reproducibility | `release_qc/` | Five-view series review, crop/coordinate reproduction, unused-coordinate reconciliation, file integrity and partition checks |
 | 3. Blinded local anatomical correspondence | `anatomical_review/` | 250 original pairs and 50 substituted controls; two clinicians' first submissions, display choices and statistics |
 | 4. Five-view independent retrieval | `multiview_retrieval/` | Fixed candidates, 222,900 scores, ranks, summaries and Figure 6 source data |
 

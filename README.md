@@ -36,5 +36,5 @@ The retrieval program uses the reorganized published dataset layout and fixed ca
 The four validation directories contain protocols, inputs, per-record results and summaries. They replace validation evidence previously bundled in the imaging deposit. `release_qc/metadata_snapshot/` preserves the pre-consolidation tables for interpretation of frozen validation inputs. Current dataset metadata consolidate these fields into `metadata.csv` and `files.csv`. Scientific results are unchanged by relocation. Historical input fingerprints describe their recorded snapshots; current repository checksums are in `validation/MANIFEST_SHA256.txt`.
 
 ## Citation and fixed code release
-Cite the dataset alongside the code/validation version used. The fixed code and validation snapshot is [v1.1.1](https://github.com/vlee-GG/paired-radiograph-cbct-code/releases/tag/v1.1.1).
+Cite the dataset alongside the code/validation version used. The fixed code and validation snapshot is [v1.1.2](https://github.com/vlee-GG/paired-radiograph-cbct-code/releases/tag/v1.1.2).
 
