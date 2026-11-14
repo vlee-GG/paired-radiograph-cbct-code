@@ -47,7 +47,7 @@ The current blinded study included 300 distinct pairs (250 original pairs and 50
 
 The current display generator, per-case section indices, display windows and case-level assessments are archived here in `validation/anatomical_review/`. Sections maximize the fraction of voxels above 300 rescaled units; display windows are 3–59,745 for radiographs and approximately −1,000–1,780 for CBCT. The current four-panel displays contain no physical scale bars or anatomical direction markers. The generator produces 320 distinct training/formal composites, including 20 training cases and 300 formal cases. The 15 hidden repeats per reader reuse formal-case images. CBCT values are not calibrated Hounsfield units.
 
-Python scripts use the [MIT licence](../LICENSE). The dataset and dataset-derived validation records use CC BY 4.0. Cite the Zenodo dataset DOI above and the fixed [code/validation release v1.1.2](https://github.com/vlee-GG/paired-radiograph-cbct-code/releases/tag/v1.1.2).
+Python scripts use the [MIT licence](../LICENSE). The dataset and dataset-derived validation records use CC BY 4.0. Cite the Zenodo dataset DOI above and the fixed [code/validation release v1.1.1](https://github.com/vlee-GG/paired-radiograph-cbct-code/releases/tag/v1.1.1).
 
 ## Final orientation provenance
 
