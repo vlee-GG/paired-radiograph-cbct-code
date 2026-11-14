@@ -25,4 +25,7 @@ No warranties are given. The license may not give you all of the permissions
 necessary for your intended use. Other rights such as publicity, privacy or
 moral rights may limit how you use the material.
 
-The same license is declared in the repository record and in CITATION.cff.
+This licence applies to dataset-derived validation records in this repository.
+Python source code is licensed separately under the MIT licence in ../LICENSE.
+The imaging dataset is deposited in Zenodo under CC BY 4.0:
+https://doi.org/10.5281/zenodo.24156428. See ../README.md for its citation.
