@@ -1,6 +1,6 @@
 # Paired radiograph–CBCT: code and validation
 
-Code and technical-validation evidence for 2,229 paired rabbit/mouse records: five physically acquired radiographs and one local CBCT crop per record. The imaging data and consolidated reuse metadata are deposited separately in Zenodo ([10.5281/zenodo.24156428](https://doi.org/10.5281/zenodo.24156428)). The pairs describe approximate local anatomical correspondence.
+Code and technical-validation evidence for 2,229 paired rabbit/mouse records: five physically acquired radiographs and one local CBCT crop per record. The imaging data and consolidated reuse metadata are plan to deposite separately in Zenodo. The pairs describe approximate local anatomical correspondence.
 
 ```text
 scripts/       CBCT cropping and five-view retrieval programs
@@ -13,7 +13,7 @@ validation/
 
 ## Imaging-data access
 
-The version 1.0.0 imaging-data package is deposited in [Zenodo](https://zenodo.org/records/24156428), with DOI [10.5281/zenodo.24156428](https://doi.org/10.5281/zenodo.24156428). Its access policy is open download under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The version 1.0.0 imaging-data package is plan to deposite in zenodo. Its access policy is open download under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 The Zenodo deposit contains one archive, `paired-radiograph-cbct.zip` (49,125,707,075 bytes; approximately 49.13 GB). Extract it before running the programs and use the extracted `paired-radiograph-cbct/` directory as the dataset root. The archive contains 14,052 files: 11,145 DICOM radiographs, 2,229 local NIfTI crops, 335 source NIfTI volumes, 335 coordinate TXT files, seven metadata/documentation files and the root README.
 
