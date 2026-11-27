@@ -1,6 +1,17 @@
 {
   "release": "v1.0.0",
   "generated": "2026-09-15T16:29:22",
+  "current_imaging_package": {
+    "version": "1.0.1",
+    "archive": "paired-radiograph-cbct-affine-corrected.zip",
+    "bytes": 49858770102,
+    "md5": "9b4fc76bafcb4675bec54857e398061b",
+    "archive_files_total": 14052,
+    "imaging_and_coordinate_files": 14044,
+    "crop_header_correction": "Translated qform and sform to the recorded crop origin. Stored voxel arrays and intensity scaling are unchanged.",
+    "per_file_checksums": "metadata/files.csv",
+    "historical_scope": "The original release and release_files_total fields describe the pre-consolidation validation snapshot."
+  },
   "counts": {
     "data_groups": 108,
     "source_volumes": 335,
@@ -34,7 +45,7 @@
     "crop_origin": "provided for all 2,229 records; each verified by re-extraction from the released source volume",
     "crop_origin_verification": "All 2,229 released crop arrays were compared with their recorded source-volume boxes within crop quantization tolerance; all boxes uniquely matched coordinate targets.",
     "source_volume_repaired": "one source volume (sample rab_v184) had a missing slice restored before release. Its five crops were re-cut from the released 420-slice volume after that restoration, so they use the standard window (slices 160-300) and 0.25 mm isotropic spacing like every other crop.",
-    "sha256": "SHA256SUMS.txt lists all 14,767 current released files except itself (14,768 total).",
+    "sha256": "The historical SHA256SUMS.txt snapshot lists 14,767 files in the pre-consolidation package. Version 1.0.1 uses metadata/files.csv for per-file SHA-256.",
     "exclusions": {
       "coordinate_targets": 2244,
       "not_released": 15,

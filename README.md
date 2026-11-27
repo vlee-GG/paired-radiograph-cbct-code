@@ -13,11 +13,13 @@ validation/
 
 ## Imaging-data access
 
-The version 1.0.0 imaging-data package is being prepared for deposition in Zenodo. Its access policy is open download under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The version 1.0.1 imaging-data package is being prepared for deposition in Zenodo. Its access policy is open download under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-The Zenodo deposit contains one archive, `paired-radiograph-cbct.zip` (49,125,707,075 bytes; approximately 49.13 GB). Extract it before running the programs and use the extracted `paired-radiograph-cbct/` directory as the dataset root. The archive contains 14,052 files: 11,145 DICOM radiographs, 2,229 local NIfTI crops, 335 source NIfTI volumes, 335 coordinate TXT files, seven metadata/documentation files and the root README.
+The imaging package consists of one archive, `paired-radiograph-cbct-affine-corrected.zip` (49,858,770,102 bytes; 46.43 GiB). Extract it before running the programs and use the extracted `paired-radiograph-cbct/` directory as the dataset root. The archive contains 14,052 files: 11,145 DICOM radiographs, 2,229 local NIfTI crops, 335 source NIfTI volumes, 335 coordinate TXT files, seven metadata/documentation files and the root README.
 
-Verify the downloaded ZIP against the MD5 checksum displayed on the Zenodo record. Verify individual imaging and coordinate files against the paths, byte sizes and SHA-256 values in `metadata/files.csv`. The current English dictionary is `metadata/data_dictionary.csv`. Keep linked observations together using `metadata/partition_units.csv`; `metadata/splits/` provides an example five-fold allocation.
+Each crop stores qform and sform transforms that place it in the reference space of its source CBCT. Crop origins and retained dimensions remain available in `metadata/metadata.csv`. The affine correction preserves the stored voxels and intensity scaling.
+
+The archive MD5 is `9b4fc76bafcb4675bec54857e398061b`. Verify individual imaging and coordinate files against the paths, byte sizes and SHA-256 values in `metadata/files.csv`. The current English dictionary is `metadata/data_dictionary.csv`. Keep linked observations together using `metadata/partition_units.csv`; `metadata/splits/` provides an example five-fold allocation.
 
 Code is licensed under [MIT](LICENSE). Imaging data and [dataset-derived validation records](validation/DATA_LICENSE.txt) are licensed under CC BY 4.0.
 

@@ -21,11 +21,11 @@ Between-reader agreement was 211/300 (70.3%); 89 cases had different reader answ
 - `display_choices.csv`, `input_hashes.csv`, `build_review_composites.py`: fixed display inputs and rendering.
 - `analyze_review.py`: recompute counts, agreement and intervals from released tables.
 - `author_review_records.csv`: all 91 case-level author conclusions and selected structural criteria.
-- Release-root `SHA256SUMS.txt`: checksums for these materials and the rest of the release. Follow-up methods and record interpretation are in `PROTOCOL.md`.
+- `../MANIFEST_SHA256.txt`: checksums for the code and validation materials. Follow-up methods and record interpretation are in `PROTOCOL.md`.
 
 No AI-assisted review opinions are included in the current manuscript or these current assessment materials.
 
 
 ## Data locations
 
-Images and current consolidated metadata are in the separate [Zenodo dataset](https://doi.org/10.5281/zenodo.24156428) (version 1.0.0; CC BY 4.0; open-download access policy). Extract `paired-radiograph-cbct.zip` and use its `paired-radiograph-cbct/` directory as the dataset root. Paths beginning `metadata/` or `source_cbct/` refer to that dataset root. Validation paths refer to this code repository. Pre-consolidation metadata are preserved in `../release_qc/metadata_snapshot/` for interpreting historical input fingerprints. Current file QC, UID normalization and radiograph provenance fields are consolidated into dataset `metadata/files.csv` (`qc_`, `uid_`, `provenance_`); group fields and complete group-to-animal links are retained in dataset `metadata/metadata.csv`.
+Images and consolidated metadata are in the version 1.0.1 imaging package prepared for Zenodo (CC BY 4.0; open-download access policy). Extract `paired-radiograph-cbct-affine-corrected.zip` and use its `paired-radiograph-cbct/` directory as the dataset root. Paths beginning `metadata/` or `source_cbct/` refer to that dataset root. Validation paths refer to this code repository. Pre-consolidation metadata are preserved in `../release_qc/metadata_snapshot/` for interpreting historical input fingerprints. Current file QC, UID normalization and radiograph provenance fields are consolidated into dataset `metadata/files.csv` (`qc_`, `uid_`, `provenance_`); group fields and complete group-to-animal links are retained in dataset `metadata/metadata.csv`.
