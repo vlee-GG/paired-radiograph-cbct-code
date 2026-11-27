@@ -38,6 +38,7 @@
     "exclusions": {
       "coordinate_targets": 2244,
       "not_released": 15,
+      "reason_counts": {"insufficient_data_quality": 15},
       "retained": 2229,
       "source_volumes_with_unreleased_targets": 11,
       "evidence": "validation/release_qc/release_validation.csv; validation/release_qc/unused_coordinate_targets.csv",
