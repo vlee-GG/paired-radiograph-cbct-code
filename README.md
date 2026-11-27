@@ -13,7 +13,7 @@ validation/
 
 ## Imaging-data access
 
-The version 1.0.1 imaging-data package is being prepared for deposition in Zenodo. Its access policy is open download under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The version 1.0.0 imaging-data package is being prepared for deposition in Zenodo. Its access policy is open download under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 The imaging package consists of one archive, `paired-radiograph-cbct-affine-corrected.zip` (49,858,770,102 bytes; 46.43 GiB). Extract it before running the programs and use the extracted `paired-radiograph-cbct/` directory as the dataset root. The archive contains 14,052 files: 11,145 DICOM radiographs, 2,229 local NIfTI crops, 335 source NIfTI volumes, 335 coordinate TXT files, seven metadata/documentation files and the root README.
 
